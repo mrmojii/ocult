@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bk5x5jvt5gnxo"]
+
+[ext_resource type="Script" uid="uid://bl0b8xvtcm0tq" path="res://World/Interactables/interactable.gd" id="1_f513q"]
+[ext_resource type="Texture2D" uid="uid://w2g3lyp1iqpy" path="res://icon.svg" id="1_wcyfv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f513q"]
+friction = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f513q"]
+size = Vector2(32, 32)
+
+[node name="Interactable" type="RigidBody2D" unique_id=1499809643]
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_f513q")
+gravity_scale = 0.0
+script = ExtResource("1_f513q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2129592002]
+scale = Vector2(0.234375, 0.265625)
+texture = ExtResource("1_wcyfv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1628216604]
+shape = SubResource("RectangleShape2D_f513q")
