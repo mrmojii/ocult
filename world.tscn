@@ -36,4 +36,3 @@ position = Vector2(348, -51)
 
 [node name="Interactable2" parent="." unique_id=1605433453 instance=ExtResource("3_tlwt5")]
 position = Vector2(289, 4)
-push_force = 15.0

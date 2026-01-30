@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
 size = Vector2(64, 64)
 
-[node name="Player" type="CharacterBody2D" unique_id=626537056]
+[node name="Player" type="CharacterBody2D" unique_id=626537056 node_paths=PackedStringArray("drop_point")]
 script = ExtResource("1_q3lat")
+drop_point = NodePath("DropPoint")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360321690]
 scale = Vector2(0.53125006, 0.515625)
@@ -18,3 +19,6 @@ shape = SubResource("RectangleShape2D_q3lat")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=227411682]
 position_smoothing_enabled = true
+
+[node name="DropPoint" type="Marker2D" parent="." unique_id=391532136]
+position = Vector2(0, 40)
