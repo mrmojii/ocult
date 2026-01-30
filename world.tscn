@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bipfifhtmfmk7"]
+
+[node name="World" type="Node2D" unique_id=1330705175]
+
+[node name="Label" type="Label" parent="." unique_id=727886711]
+offset_left = 163.0
+offset_top = 106.0
+offset_right = 203.0
+offset_bottom = 129.0
+text = "TEST"
