@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://bipfifhtmfmk7"]
 
 [ext_resource type="PackedScene" uid="uid://deqvgug1ej1nj" path="res://Player/Player.tscn" id="1_3f78f"]
+[ext_resource type="Script" uid="uid://b437hq7xk7amx" path="res://World/world.gd" id="1_k8do8"]
 [ext_resource type="PackedScene" uid="uid://bdohi63uiq6yi" path="res://World/wall.tscn" id="2_k8do8"]
 [ext_resource type="PackedScene" uid="uid://bk5x5jvt5gnxo" path="res://World/Interactables/Interactable.tscn" id="3_bkhv4"]
 [ext_resource type="PackedScene" uid="uid://bug1q4ji6msk5" path="res://Circle/Circle.tscn" id="4_yf0ba"]
 
-[node name="World" type="Node2D" unique_id=1330705175]
+[node name="World" type="Node2D" unique_id=1330705175 node_paths=PackedStringArray("player")]
+script = ExtResource("1_k8do8")
+player = NodePath("Player")
 
 [node name="Player" parent="." unique_id=626537056 instance=ExtResource("1_3f78f")]
 

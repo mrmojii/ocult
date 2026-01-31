@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://bug1q4ji6msk5"]
 
 [ext_resource type="Script" uid="uid://dw0a0ktds0ceo" path="res://Circle/circle.gd" id="1_53ve8"]
+[ext_resource type="Script" uid="uid://bjgb7kbdyivef" path="res://Circle/Rules/CircleRule.gd" id="2_th0qy"]
+[ext_resource type="Resource" uid="uid://bo53yoxpk7ufh" path="res://Circle/Rules/Pentagram.tres" id="3_odtd8"]
 
-[node name="Circle" type="Node2D" unique_id=1205258289]
+[node name="Circle" type="Node2D" unique_id=1205258289 node_paths=PackedStringArray("line_base", "lines")]
 script = ExtResource("1_53ve8")
+line_base = NodePath("Line2DBase")
+lines = NodePath("Lines")
+rules = Array[ExtResource("2_th0qy")]([ExtResource("3_odtd8")])
+
+[node name="Line2DBase" type="Line2D" parent="." unique_id=580386121]
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(1, 0, 0, 1)
+
+[node name="Lines" type="Node2D" parent="." unique_id=813654773]
