@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cmr21n3ci3acb"]
+
+[ext_resource type="Script" uid="uid://b4gq4oq3pbfto" path="res://Fight/Scripts/fighter.gd" id="1_houfa"]
+[ext_resource type="Texture2D" uid="uid://cwg45nxr3gmp4" path="res://Fight/Assets/normal.png" id="2_nrxbo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_houfa"]
+radius = 49.0408
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_houfa"]
+size = Vector2(61, 120)
+
+[node name="Fighter" type="Node2D" unique_id=141794754]
+script = ExtResource("1_houfa")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=659191694]
+position = Vector2(40, 80)
+scale = Vector2(0.866, 1)
+texture = ExtResource("2_nrxbo")
+
+[node name="ShotCollision" type="Area2D" parent="." unique_id=1324336972]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShotCollision" unique_id=1015057567]
+position = Vector2(41, 71)
+shape = SubResource("CircleShape2D_houfa")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1844962785]
+position = Vector2(43, 53)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=259551847]
+position = Vector2(-2, 21)
+shape = SubResource("RectangleShape2D_houfa")
+
+[node name="TimerAttack" type="Timer" parent="." unique_id=1814292292]
+
+[node name="Health" type="ProgressBar" parent="." unique_id=772103183]
+offset_left = 6.0
+offset_top = 17.0
+offset_right = 85.0
+offset_bottom = 32.0
+value = 50.0
+show_percentage = false
+
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
