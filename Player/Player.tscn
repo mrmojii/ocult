@@ -6,9 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
 size = Vector2(64, 64)
 
-[node name="Player" type="CharacterBody2D" unique_id=626537056 node_paths=PackedStringArray("drop_point")]
+[node name="Player" type="CharacterBody2D" unique_id=626537056 node_paths=PackedStringArray("drop_point", "camera")]
 script = ExtResource("1_q3lat")
 drop_point = NodePath("DropPoint")
+camera = NodePath("Camera2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360321690]
 scale = Vector2(0.53125006, 0.515625)

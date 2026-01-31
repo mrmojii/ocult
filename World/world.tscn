@@ -51,8 +51,9 @@ position = Vector2(44, 243)
 radius = 400.0
 points_number = 10
 
-[node name="ActivationArea" parent="." unique_id=900814538 instance=ExtResource("6_yf0ba")]
-position = Vector2(9, 737)
+[node name="ActivationArea" parent="." unique_id=900814538 node_paths=PackedStringArray("circle") instance=ExtResource("6_yf0ba")]
+position = Vector2(41, 770)
+circle = NodePath("../Circle")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1060347737]
 

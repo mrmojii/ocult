@@ -14,3 +14,10 @@ script = ExtResource("1_cmjl3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=877507740]
 shape = SubResource("RectangleShape2D_renna")
+
+[node name="Timer" type="Timer" parent="." unique_id=1979702504]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
