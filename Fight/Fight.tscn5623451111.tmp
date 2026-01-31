@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://chhqu6v3stilj"]
+
+[ext_resource type="Texture2D" uid="uid://c7grk1iof8xid" path="res://Fight/Assets/background.png" id="1_bv4rg"]
+[ext_resource type="Script" uid="uid://bcy8id4cxpdyq" path="res://Fight/Scripts/Fight.gd" id="1_ngwck"]
+
+[node name="Fight" type="Node2D" unique_id=879052435]
+script = ExtResource("1_ngwck")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1697197671]
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1541.1157
+offset_bottom = 1011.3268
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.78190106, 0.78906244)
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("1_bv4rg")
+
+[node name="SkullContainer" type="Node" parent="." unique_id=125808488]
+
+[node name="SkullStart" type="Marker2D" parent="." unique_id=90027547]
+position = Vector2(150, 500)
