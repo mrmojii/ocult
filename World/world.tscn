@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bipfifhtmfmk7"]
+
+[ext_resource type="PackedScene" uid="uid://deqvgug1ej1nj" path="res://Player/Player.tscn" id="1_3f78f"]
+[ext_resource type="PackedScene" uid="uid://bdohi63uiq6yi" path="res://World/wall.tscn" id="2_k8do8"]
+[ext_resource type="PackedScene" uid="uid://bk5x5jvt5gnxo" path="res://World/Interactables/Interactable.tscn" id="3_bkhv4"]
+[ext_resource type="PackedScene" uid="uid://bug1q4ji6msk5" path="res://Circle/Circle.tscn" id="4_yf0ba"]
+
+[node name="World" type="Node2D" unique_id=1330705175]
+
+[node name="Player" parent="." unique_id=626537056 instance=ExtResource("1_3f78f")]
+
+[node name="Walls" type="Node2D" parent="." unique_id=1916328929]
+
+[node name="Wall" parent="Walls" unique_id=897687764 instance=ExtResource("2_k8do8")]
+position = Vector2(-728, 232)
+scale = Vector2(1, 14.36)
+
+[node name="Wall2" parent="Walls" unique_id=1867440770 instance=ExtResource("2_k8do8")]
+position = Vector2(669, 14)
+scale = Vector2(1, 14.36)
+
+[node name="Wall3" parent="Walls" unique_id=1860885533 instance=ExtResource("2_k8do8")]
+position = Vector2(181, -215.00003)
+rotation = 1.5692836
+scale = Vector2(1, 14.36)
+
+[node name="Wall4" parent="Walls" unique_id=1782202375 instance=ExtResource("2_k8do8")]
+position = Vector2(-486, 446)
+rotation = 1.5692836
+scale = Vector2(1, 14.36)
+
+[node name="Interactable" parent="." unique_id=2051806297 instance=ExtResource("3_bkhv4")]
+position = Vector2(244, -79)
+
+[node name="Interactable3" parent="." unique_id=1499809643 instance=ExtResource("3_bkhv4")]
+position = Vector2(348, -51)
+
+[node name="Interactable2" parent="." unique_id=1605433453 instance=ExtResource("3_bkhv4")]
+position = Vector2(289, 4)
+
+[node name="Circle" parent="." unique_id=1205258289 instance=ExtResource("4_yf0ba")]
+position = Vector2(44, 243)
+radius = 400.0
+points_number = 10
