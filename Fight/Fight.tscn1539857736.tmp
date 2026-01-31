@@ -6,13 +6,10 @@
 [node name="Fight" type="Node2D" unique_id=879052435]
 script = ExtResource("1_ngwck")
 
-[node name="FighterContainer" type="Node" parent="." unique_id=125808488]
+[node name="SkullContainer" type="Node" parent="." unique_id=125808488]
 
-[node name="FighterStartMe" type="Marker2D" parent="." unique_id=90027547]
+[node name="SkullStart" type="Marker2D" parent="." unique_id=90027547]
 position = Vector2(250, 700)
-
-[node name="FighterStartOp" type="Marker2D" parent="." unique_id=1854154172]
-position = Vector2(1600, 700)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=24333742]
 layer = -1
