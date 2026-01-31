@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -400.0
 var _interactables : Array[Interactable]
 var _hovered_interactalbe : Interactable
 var _picked_interactable : Interactable
+var _hovered_point : Point
 
 func add_interactable(obj : Interactable) -> void:
 	_interactables.push_back(obj)
@@ -21,6 +22,17 @@ func remove_interactable(obj : Interactable) -> void:
 	if _interactables.is_empty():
 		_hovered_interactalbe.on_unhover()
 		_hovered_interactalbe = null
+
+func hover_point(point : Point) -> void:
+	if _hovered_point:
+		_hovered_point.is_hovered = false
+	_hovered_point = point
+	_hovered_point.is_hovered = true
+
+func unhover_point(point : Point) -> void:
+	point.is_hovered = false
+	if _hovered_point and _hovered_point == point:
+		_hovered_point = null
 
 func _process(delta: float) -> void:
 	_update_interactables()

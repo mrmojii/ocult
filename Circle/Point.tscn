@@ -2,5 +2,16 @@
 
 [ext_resource type="Script" uid="uid://drxguxpiwdmku" path="res://Circle/point.gd" id="1_1273d"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1273d"]
+radius = 30.0
+
 [node name="Point" type="Node2D" unique_id=1496123238]
 script = ExtResource("1_1273d")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1431890145]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2127098035]
+shape = SubResource("CircleShape2D_1273d")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
