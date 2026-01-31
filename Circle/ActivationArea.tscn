@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dtax6b12brv1u"]
+
+[ext_resource type="Script" uid="uid://dhmwwww6ddulm" path="res://Circle/activation_area.gd" id="1_cmjl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_renna"]
+size = Vector2(128, 64)
+
+[node name="ActivationArea" type="Node2D" unique_id=900814538]
+script = ExtResource("1_cmjl3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1256047538]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2080495863]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=877507740]
+shape = SubResource("RectangleShape2D_renna")

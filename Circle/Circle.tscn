@@ -4,6 +4,24 @@
 [ext_resource type="Script" uid="uid://bjgb7kbdyivef" path="res://Circle/Rules/CircleRule.gd" id="2_th0qy"]
 [ext_resource type="Resource" uid="uid://bo53yoxpk7ufh" path="res://Circle/Rules/Pentagram.tres" id="3_odtd8"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_th0qy"]
+radius = 95.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odtd8"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bflbg"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hjcjt"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gnkcn"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0yhp4"]
+radius = 50.0
+
 [node name="Circle" type="Node2D" unique_id=1205258289 node_paths=PackedStringArray("line_base", "lines")]
 script = ExtResource("1_53ve8")
 line_base = NodePath("Line2DBase")
@@ -15,3 +33,28 @@ points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(1, 0, 0, 1)
 
 [node name="Lines" type="Node2D" parent="." unique_id=813654773]
+
+[node name="Pentagram" type="Area2D" parent="." unique_id=631347884]
+
+[node name="CollisionCenter" type="CollisionShape2D" parent="Pentagram" unique_id=39889994]
+shape = SubResource("CircleShape2D_th0qy")
+
+[node name="CollisionTop" type="CollisionShape2D" parent="Pentagram" unique_id=849802906]
+position = Vector2(0, -203)
+shape = SubResource("CircleShape2D_odtd8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pentagram" unique_id=1629023689]
+position = Vector2(-179, -55)
+shape = SubResource("CircleShape2D_bflbg")
+
+[node name="CollisionTopRight" type="CollisionShape2D" parent="Pentagram" unique_id=68572712]
+position = Vector2(179, -55)
+shape = SubResource("CircleShape2D_hjcjt")
+
+[node name="CollisionBotLeft" type="CollisionShape2D" parent="Pentagram" unique_id=1931405280]
+position = Vector2(-118, 150)
+shape = SubResource("CircleShape2D_gnkcn")
+
+[node name="CollisionBotRight" type="CollisionShape2D" parent="Pentagram" unique_id=1090636448]
+position = Vector2(118, 150)
+shape = SubResource("CircleShape2D_0yhp4")

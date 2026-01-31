@@ -1,15 +1,27 @@
 class_name Interactable
 extends RigidBody2D
 
+enum ItemType
+{
+	Item = 0,
+	Mask
+}
+
 @export var push_force : float = 15.0
 @export var mu_static = 0.8  # friction coefficients
 @export var mu_moving = 0.5  # pushing something moving is easier
 @export var weight : float = 16000.0
+@export var type : ItemType = ItemType.Item
+@export var image : Texture2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var is_picked := false
+
+func _ready() -> void:
+	if image:
+		sprite_2d.texture = image
 
 func add_push(force: float, direction : Vector2) -> void:
 	apply_impulse(direction * push_force * force)

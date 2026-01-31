@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bdohi63uiq6yi" path="res://World/wall.tscn" id="2_k8do8"]
 [ext_resource type="PackedScene" uid="uid://bk5x5jvt5gnxo" path="res://World/Interactables/Interactable.tscn" id="3_bkhv4"]
 [ext_resource type="PackedScene" uid="uid://bug1q4ji6msk5" path="res://Circle/Circle.tscn" id="4_yf0ba"]
+[ext_resource type="Texture2D" uid="uid://v6cy77voqym3" path="res://white_wall.png" id="5_eidgh"]
 [ext_resource type="PackedScene" uid="uid://bw51uqmtwoxta" path="res://UI/ui.tscn" id="5_k8do8"]
+[ext_resource type="PackedScene" uid="uid://dtax6b12brv1u" path="res://Circle/ActivationArea.tscn" id="6_yf0ba"]
 
 [node name="World" type="Node2D" unique_id=1330705175 node_paths=PackedStringArray("player")]
 script = ExtResource("1_k8do8")
@@ -35,6 +37,8 @@ scale = Vector2(1, 14.36)
 
 [node name="Interactable" parent="." unique_id=2051806297 instance=ExtResource("3_bkhv4")]
 position = Vector2(244, -79)
+type = 1
+image = ExtResource("5_eidgh")
 
 [node name="Interactable3" parent="." unique_id=1499809643 instance=ExtResource("3_bkhv4")]
 position = Vector2(348, -51)
@@ -47,6 +51,10 @@ position = Vector2(44, 243)
 radius = 400.0
 points_number = 10
 
+[node name="ActivationArea" parent="." unique_id=900814538 instance=ExtResource("6_yf0ba")]
+position = Vector2(9, 737)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1060347737]
 
 [node name="UI" parent="CanvasLayer" unique_id=1552743313 instance=ExtResource("5_k8do8")]
+visible = false
