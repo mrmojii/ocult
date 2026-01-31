@@ -30,9 +30,9 @@ const _TEXTURES := {
 
 const _SHOT_RANGE := { 
 	Type.Normal:  50,
-	Type.Archer:  250,
-	Type.Warrior: 75,
-	Type.Wizard:  150,
+	Type.Archer:  600,
+	Type.Warrior: 50,
+	Type.Wizard:  300,
 }
 
 # Privates
@@ -60,6 +60,7 @@ func _process(delta: float) -> void:
 	for area in $ShotCollision.get_overlapping_areas():
 		if area.name != "HitBox":
 			continue
+			
 		var fighter := area.get_parent() as FighterClass
 		if fighter != null and fighter.get_side() != _side:
 			found_enemy = true
@@ -68,3 +69,6 @@ func _process(delta: float) -> void:
 	if not found_enemy:
 		var dir = +1 if _side == Sides.Me else -1
 		position.x += dir * delta * Speed_x
+
+func _on_timer_attack_timeout() -> void:
+	pass # Replace with function body.

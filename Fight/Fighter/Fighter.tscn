@@ -29,3 +29,15 @@ position = Vector2(43, 53)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=259551847]
 position = Vector2(-2, 21)
 shape = SubResource("RectangleShape2D_houfa")
+
+[node name="TimerAttack" type="Timer" parent="." unique_id=1814292292]
+
+[node name="Health" type="ProgressBar" parent="." unique_id=772103183]
+offset_left = 6.0
+offset_top = 17.0
+offset_right = 85.0
+offset_bottom = 32.0
+value = 50.0
+show_percentage = false
+
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
