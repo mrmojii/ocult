@@ -16,3 +16,13 @@ func _on_game_state_changed(state:GameManager.GAME_STATE):
 		show()
 	else :
 		hide()
+
+
+func _on_quit_button_button_up() -> void:
+	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_resume_button_button_up() -> void:
+	GameManager.state = GameManager.GAME_STATE.PLAY
+	pass # Replace with function body.

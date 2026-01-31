@@ -53,8 +53,9 @@ func _process(delta: float) -> void:
 	if _moving_camera_back:
 		camera.global_position = lerp(camera.global_position, global_position, 0.03)
 		camera.zoom = lerp(camera.zoom, Vector2(3.0,3.0), 0.03)
-		if global_position.distance_to(camera.global_position) <= 1.0 and camera.zoom == Vector2(3.0,3.0):
+		if global_position.distance_to(camera.global_position) <= 1.0:
 			_moving_camera_back = false
+			camera.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
 
 func _move_picked() -> void:
 	if !_picked_interactable:
@@ -145,6 +146,7 @@ func _release_activation_area() -> void:
 		print("too early!")
 	_is_activating = false
 	_moving_camera_back = true
+	camera.process_callback = Camera2D.CAMERA2D_PROCESS_IDLE
 
 func _on_activation_area_timer() -> void:
 	print("timer")

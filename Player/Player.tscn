@@ -12,7 +12,7 @@ drop_point = NodePath("DropPoint")
 camera = NodePath("Camera2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360321690]
-scale = Vector2(0.53125006, 0.515625)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_3qydi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2185953]
@@ -20,6 +20,7 @@ shape = SubResource("RectangleShape2D_q3lat")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=227411682]
 zoom = Vector2(3, 3)
+process_callback = 0
 position_smoothing_enabled = true
 
 [node name="DropPoint" type="Marker2D" parent="." unique_id=391532136]

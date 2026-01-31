@@ -26,6 +26,12 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/default_font_antialiasing=0
+theme/default_font_subpixel_positioning=0
+theme/custom_font="uid://bkpi0k1kbwmr3"
+
 [input]
 
 MoveUp={
