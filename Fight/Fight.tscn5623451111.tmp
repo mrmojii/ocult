@@ -7,7 +7,6 @@
 script = ExtResource("1_ngwck")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1697197671]
-self_modulate = Color(0.21258, 0.21739617, 0.44370294, 1)
 clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,4 +23,4 @@ texture = ExtResource("1_bv4rg")
 [node name="SkullContainer" type="Node" parent="." unique_id=125808488]
 
 [node name="SkullStart" type="Marker2D" parent="." unique_id=90027547]
-position = Vector2(150, 300)
+position = Vector2(150, 500)
