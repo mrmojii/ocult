@@ -40,6 +40,5 @@ texture = ExtResource("1_bv4rg")
 expand_mode = 1
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1604878597]
-unique_name_in_owner = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

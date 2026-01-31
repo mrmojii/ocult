@@ -1,18 +1,18 @@
 class_name FighterClass extends Node2D
 
+# Public vars
 @export var Speed_x: int = 50
 
+# Public definitions
 enum Type {
-	Normal,
-	Archer,
-	Warrior,
-	Wizard
+	Normal, Archer, Warrior, Wizard
 }
 
 enum Sides {
 	Me, Op
 }
 
+# Assets
 const _TEXTURES := { 
 	Sides.Me: {
 		Type.Normal: preload("res://Fight/assets/normal.png"),
@@ -28,18 +28,43 @@ const _TEXTURES := {
 	}
 }
 
-# Setters
-var _type: Type = Type.Normal
+const _SHOT_RANGE := { 
+	Type.Normal:  50,
+	Type.Archer:  250,
+	Type.Warrior: 75,
+	Type.Wizard:  150,
+}
+
+# Privates
+var _type: Type  = Type.Normal
 var _side: Sides = Sides.Me
+
+# Setters
 func set_characteristic(side: Sides, type: Type) -> void:
 	_type = type
 	_side = side
 	$Sprite.texture = _TEXTURES[side][type]
+	$ShotCollision/CollisionShape2D.shape = $ShotCollision/CollisionShape2D.shape.duplicate()
+	($ShotCollision/CollisionShape2D.shape as CircleShape2D).radius = _SHOT_RANGE[type]
 	
 # Getters
 func get_height() -> int:
 	return $Sprite.texture.get_height()
 	
+func get_side() -> Sides:
+	return _side
+
+# Api callbacks
 func _process(delta: float) -> void:
-	var sign = +1 if _side == Sides.Me else -1
-	position.x += sign * delta * Speed_x
+	var found_enemy := false
+	for area in $ShotCollision.get_overlapping_areas():
+		if area.name != "HitBox":
+			continue
+		var fighter := area.get_parent() as FighterClass
+		if fighter != null and fighter.get_side() != _side:
+			found_enemy = true
+			break
+
+	if not found_enemy:
+		var dir = +1 if _side == Sides.Me else -1
+		position.x += dir * delta * Speed_x
