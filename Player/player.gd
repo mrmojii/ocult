@@ -10,6 +10,8 @@ var _interactables : Array[Interactable]
 var _hovered_interactalbe : Interactable
 var _picked_interactable : Interactable
 var _hovered_point : Point
+var _selected_point : Point
+var _selected_circle : Circle
 
 func add_interactable(obj : Interactable) -> void:
 	_interactables.push_back(obj)
@@ -79,12 +81,25 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact"):
-		if _picked_interactable:
-			_picked_interactable.on_drop()
-			_picked_interactable = null
-			if _interactables.size() == 1:
-				_hovered_interactalbe = _interactables[0]
-				_hovered_interactalbe.on_hover()
-		elif _hovered_interactalbe:
-			_hovered_interactalbe.on_interact()
-			_picked_interactable = _hovered_interactalbe
+		if not _interact_interactable():
+			_interact_point()
+
+func _interact_interactable() -> bool:
+	if _picked_interactable:
+		_picked_interactable.on_drop()
+		_picked_interactable = null
+		if _interactables.size() == 1:
+			_hovered_interactalbe = _interactables[0]
+			_hovered_interactalbe.on_hover()
+		return true
+	elif _hovered_interactalbe:
+		_hovered_interactalbe.on_interact()
+		_picked_interactable = _hovered_interactalbe
+		return true
+	return false
+
+func _interact_point() -> void:
+	if !_hovered_point:
+		return
+	
+	var circle : Circle = _hovered_point.select_point()

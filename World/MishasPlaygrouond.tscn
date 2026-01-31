@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://k3tltj7staoa"]
+
+[ext_resource type="Script" uid="uid://rdykefyyeu7x" path="res://World/mishas_playgrouond.gd" id="1_m06rr"]
+[ext_resource type="PackedScene" uid="uid://deqvgug1ej1nj" path="res://Player/Player.tscn" id="1_xbaxx"]
+[ext_resource type="PackedScene" uid="uid://bug1q4ji6msk5" path="res://Circle/Circle.tscn" id="2_iac5s"]
+[ext_resource type="PackedScene" uid="uid://bk5x5jvt5gnxo" path="res://World/Interactables/Interactable.tscn" id="3_iac5s"]
+
+[node name="MishasPlaygrouond" type="Node2D" unique_id=461479948]
+script = ExtResource("1_m06rr")
+
+[node name="Player" parent="." unique_id=626537056 instance=ExtResource("1_xbaxx")]
+position = Vector2(216, 78)
+
+[node name="Circle" parent="." unique_id=1205258289 instance=ExtResource("2_iac5s")]
+position = Vector2(516, 470)
+radius = 400.0
+points_number = 10
+
+[node name="Interactable" parent="." unique_id=1499809643 instance=ExtResource("3_iac5s")]
+position = Vector2(128, 366)
+
+[node name="Interactable2" parent="." unique_id=2011337648 instance=ExtResource("3_iac5s")]
+position = Vector2(258, 452)
