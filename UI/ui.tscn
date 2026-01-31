@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://bw51uqmtwoxta"]
+
+[ext_resource type="Script" uid="uid://ctjh0e85cm1oc" path="res://UI/ui.gd" id="1_2fwl4"]
+[ext_resource type="Script" uid="uid://bmsjquddrkusy" path="res://UI/main_menu.gd" id="2_dajm1"]
+[ext_resource type="Script" uid="uid://m1krevk8f4ti" path="res://UI/pause_menu.gd" id="3_e6gg6"]
+[ext_resource type="Script" uid="uid://cnocs1mqv554a" path="res://UI/credits_menu.gd" id="4_hat8c"]
+
+[node name="UI" type="Control" unique_id=1552743313]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fwl4")
+
+[node name="MainMenu" type="Control" parent="." unique_id=1253853406]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_dajm1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu" unique_id=445912655]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer" unique_id=727049238]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="StartButton" type="Button" parent="MainMenu/VBoxContainer" unique_id=1577657658]
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer" unique_id=1330622432]
+layout_mode = 2
+text = "Quit"
+
+[node name="PauseMenu" type="Control" parent="." unique_id=456376627]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_e6gg6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=1080201504]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer" unique_id=902326594]
+layout_mode = 2
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1597235845]
+layout_mode = 2
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=890191758]
+layout_mode = 2
+text = "Quit"
+
+[node name="CreditsMenu" type="Control" parent="." unique_id=156149899]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_hat8c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsMenu" unique_id=1473977514]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -24.5
+offset_right = 78.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CreditsMenu/VBoxContainer" unique_id=1361982024]
+layout_mode = 2
+text = "Done by cool people :D
+"
