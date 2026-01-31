@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://deqvgug1ej1nj" path="res://Player/Player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://bdohi63uiq6yi" path="res://World/wall.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://bk5x5jvt5gnxo" path="res://World/Interactables/Interactable.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://bug1q4ji6msk5" path="res://Circle/Circle.tscn" id="4_aqk2v"]
 
 [node name="World" type="Node2D" unique_id=1330705175]
 
@@ -36,3 +37,6 @@ position = Vector2(348, -51)
 
 [node name="Interactable2" parent="." unique_id=1605433453 instance=ExtResource("3_tlwt5")]
 position = Vector2(289, 4)
+
+[node name="Circle" parent="." unique_id=1205258289 instance=ExtResource("4_aqk2v")]
+position = Vector2(129, 72)
