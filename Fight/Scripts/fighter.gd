@@ -126,7 +126,7 @@ func _on_timer_attack_timeout() -> void:
 		return
 
 	_play_attack_anim()
-	_target.take_hit(1)
+	_target.take_hit(10)
 	
 # ---------- Animations --------------
 func _play_attack_anim() -> void:
