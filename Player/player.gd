@@ -1,55 +1,57 @@
 class_name Player
 extends CharacterBody2D
 
-@export var drop_point : Marker2D
-@export var camera : Camera2D
+@export var drop_point: Marker2D
+@export var camera: Camera2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-var _interactables : Array[Interactable]
-var _hovered_interactalbe : Interactable
-var _picked_interactable : Interactable
-var _hovered_point : Point
-var _selected_point : Point
-var _selected_circle : Circle
-var _activation_area : ActivationArea
+var _interactables: Array[Interactable]
+var _hovered_interactalbe: Interactable
+var _picked_interactable: Interactable
+var _hovered_point: Point
+var _selected_point: Point
+var _selected_circle: Circle
+var _activation_area: ActivationArea
 
-var _hovered_spawner : Spawner
+var _hovered_spawner: Spawner
 
 var _is_activating := false
-var _activation_time : float = 0.0
+var _activation_time: float = 0.0
 var _moving_camera_back := false
 
-func add_interactable(obj : Interactable) -> void:
+var _controls_locked := false
+
+func add_interactable(obj: Interactable) -> void:
 	_interactables.push_back(obj)
 	if _interactables.size() == 1:
 		_hovered_interactalbe = _interactables[0]
 		_hovered_interactalbe.on_hover()
 
-func remove_interactable(obj : Interactable) -> void:
+func remove_interactable(obj: Interactable) -> void:
 	_interactables.erase(obj)
 	if _interactables.is_empty():
 		_hovered_interactalbe.on_unhover()
 		_hovered_interactalbe = null
 
-func hover_point(point : Point) -> void:
+func hover_point(point: Point) -> void:
 	if _hovered_point:
 		_hovered_point.is_hovered = false
 	_hovered_point = point
 	_hovered_point.is_hovered = true
 
-func unhover_point(point : Point) -> void:
+func unhover_point(point: Point) -> void:
 	point.is_hovered = false
 	if _hovered_point and _hovered_point == point:
 		_hovered_point = null
 
-func hover_spawner(spawner : Spawner) -> void:
+func hover_spawner(spawner: Spawner) -> void:
 	if _hovered_spawner:
 		_hovered_spawner.on_unhover()
 	_hovered_spawner = spawner
 
-func unhover_spawner(spawner : Spawner) -> void:
+func unhover_spawner(spawner: Spawner) -> void:
 	spawner.on_unhover()
 	if spawner == _hovered_spawner:
 		_hovered_spawner = null
@@ -60,14 +62,13 @@ func _process(delta: float) -> void:
 	
 	if _is_activating and _activation_area:
 		camera.global_position = lerp(camera.global_position, _activation_area.circle.global_position + Vector2(0, 70), 0.03)
-		camera.zoom = lerp(camera.zoom, Vector2(1.07,1.07), 0.03)
+		camera.zoom = lerp(camera.zoom, Vector2(1.07, 1.07), 0.03)
 	
 	if _moving_camera_back:
 		camera.global_position = lerp(camera.global_position, global_position, 0.03)
-		camera.zoom = lerp(camera.zoom, Vector2(3.0,3.0), 0.03)
+		camera.zoom = lerp(camera.zoom, Vector2(3.0, 3.0), 0.03)
 		if global_position.distance_to(camera.global_position) <= 1.0:
 			_moving_camera_back = false
-			#camera.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
 
 func _move_picked() -> void:
 	if !_picked_interactable:
@@ -93,19 +94,20 @@ func _update_interactables() -> void:
 		_hovered_interactalbe.on_hover()
 
 func _physics_process(delta: float) -> void:
-	var direction : Vector2 = Vector2.ZERO
+	var direction: Vector2 = Vector2.ZERO
 	direction.x = Input.get_axis("MoveLeft", "MoveRight")
 	direction.y = Input.get_axis("MoveUp", "MoveDown")
 	direction = direction.normalized()
 
-	velocity = SPEED * direction
+	if !_controls_locked:
+		velocity = SPEED * direction
 
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 			var other = collision.get_collider()
 			if other is Interactable and !other.is_picked:
 				var push_dir = collision.get_normal()
-				var push_force : float = 100.0
+				var push_force: float = 100.0
 				other.add_push(push_force, -push_dir)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -131,7 +133,7 @@ func _interact_interactable() -> bool:
 		return true
 	return false
 
-func pickup_interactable(item : Interactable) -> void:
+func pickup_interactable(item: Interactable) -> void:
 	item.on_interact()
 	_picked_interactable = item
 
@@ -147,7 +149,7 @@ func _interact_spawner() -> void:
 	
 	_hovered_spawner.on_interact()
 
-func _interact_activation_area() ->  void:
+func _interact_activation_area() -> void:
 	if !_activation_area:
 		return
 	
@@ -159,7 +161,7 @@ func _interact_activation_area() ->  void:
 	_moving_camera_back = false
 	
 func _release_activation_area() -> void:
-	if !_activation_area:
+	if !_activation_area or _controls_locked:
 		return
 		
 	if !_activation_area.timer.is_stopped():
@@ -167,19 +169,18 @@ func _release_activation_area() -> void:
 		print("too early!")
 	_is_activating = false
 	_moving_camera_back = true
-	#camera.process_callback = Camera2D.CAMERA2D_PROCESS_IDLE
 
 func _on_activation_area_timer() -> void:
 	print("timer")
-	pass
+	_controls_locked = true
 	
-func hover_activation_area(area : ActivationArea) -> void:
+func hover_activation_area(area: ActivationArea) -> void:
 	_activation_area = area
 	area.is_active = true
 	_activation_time = _activation_area.time
 	_activation_area.timer.timeout.connect(_on_activation_area_timer)
 
-func unhover_activation_area(area : ActivationArea) -> void:
+func unhover_activation_area(area: ActivationArea) -> void:
 	area.is_active = false
 	_release_activation_area()
 	_activation_area.timer.timeout.disconnect(_on_activation_area_timer)
