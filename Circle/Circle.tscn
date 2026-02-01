@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://vm6sg87povlh" path="res://Assets/Blood_Trail_2.png" id="4_bflbg"]
 [ext_resource type="Texture2D" uid="uid://wopegxuxcrc4" path="res://Assets/Circle.png" id="4_odtd8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_th0qy"]
-radius = 95.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_odtd8"]
 radius = 50.0
 
@@ -23,6 +20,9 @@ radius = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yhp4"]
 radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_th0qy"]
+radius = 95.0
 
 [node name="Circle" type="Node2D" unique_id=1205258289 node_paths=PackedStringArray("line_base", "lines")]
 z_index = -1
@@ -42,9 +42,6 @@ end_cap_mode = 2
 [node name="Lines" type="Node2D" parent="." unique_id=813654773]
 
 [node name="Pentagram" type="Area2D" parent="." unique_id=631347884]
-
-[node name="CollisionCenter" type="CollisionShape2D" parent="Pentagram" unique_id=39889994]
-shape = SubResource("CircleShape2D_th0qy")
 
 [node name="CollisionTop" type="CollisionShape2D" parent="Pentagram" unique_id=849802906]
 position = Vector2(0, -203)
@@ -68,3 +65,8 @@ shape = SubResource("CircleShape2D_0yhp4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=482240346]
 texture = ExtResource("4_odtd8")
+
+[node name="Center" type="Area2D" parent="." unique_id=870166553]
+
+[node name="CollisionCenter" type="CollisionShape2D" parent="Center" unique_id=39889994]
+shape = SubResource("CircleShape2D_th0qy")

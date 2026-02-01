@@ -9,6 +9,9 @@ const POINT = preload("uid://743mwpx3gf6w")
 @export var lines : Node2D
 @export var rules : Array[CircleRule]
 
+@onready var center: Area2D = $Center
+@onready var pentagram: Area2D = $Pentagram
+
 enum CircleState
 {
 	Idle = 0,
@@ -24,6 +27,11 @@ var _new_line : Line2D = null
 var _first_point : Point = null
 
 var _connected_points : Array[Vector2i]
+
+var has_pentagram := false
+var _items : Array[Interactable]
+var _item_current : int
+var _mask : Interactable
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, radius, Color.RED, false)
@@ -80,7 +88,7 @@ func _create_line(point : Point) -> void:
 	_new_line = line_base.duplicate()
 	_new_line.points[0] = point.global_position
 	_new_line.points.push_back(PlayerManager.player.global_position)
-	add_child(_new_line)
+	lines.add_child(_new_line)
 	_new_line.global_position = Vector2.ZERO
 
 func _connect_line(point) -> void:
@@ -128,4 +136,51 @@ func check_for_rules() -> void:
 			continue
 		else:
 			found_rule = i
-			print("FOUND RULE: %s" % rules[i].name)
+			has_pentagram = true
+			#print("FOUND RULE: %s" % rules[i].name)
+
+func has_mask_in_the_center() -> bool:
+	for i in center.get_overlapping_bodies():
+		if i is Interactable and i.data.id == 0:
+			_mask = i
+			return true
+	return false
+
+func update_items_pentagram() -> void:
+	_items.clear()
+	_item_current = 0
+	for i in pentagram.get_overlapping_bodies():
+		if i is Interactable:
+			_items.push_back(i)
+
+func hit_the_note() -> void:
+	if _items.is_empty():
+		return
+	
+	if _item_current >= _items.size():
+		return
+	
+	_items[_item_current].spawn_good_label()
+	if _items[_item_current].power >= 6:
+		_item_current += 1
+
+func miss_the_note() -> void:
+	if _items.is_empty():
+		return
+	
+	if _item_current >= _items.size():
+		return
+	
+	_items[_item_current].spawn_bad_label()
+
+func clear_circle() -> void:
+	_connected_points.clear()
+	for c in lines.get_children():
+		if c is Line2D:
+			c.queue_free()
+
+func clear_items() -> void:
+	for i in _items:
+		i.queue_free()
+	if _mask:
+		_mask.queue_free()

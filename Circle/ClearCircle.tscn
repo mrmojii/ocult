@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dikgum4rwqa11"]
+
+[ext_resource type="Script" uid="uid://nd1tjdo8kgal" path="res://Circle/clear_circle.gd" id="1_4vlh6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vlh6"]
+size = Vector2(128, 64)
+
+[node name="ClearCircle" type="Node2D" unique_id=280839688]
+script = ExtResource("1_4vlh6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1779056163]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1255781348]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1214409205]
+shape = SubResource("RectangleShape2D_4vlh6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

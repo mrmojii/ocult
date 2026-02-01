@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b437hq7xk7amx" path="res://World/world.gd" id="1_k8do8"]
 [ext_resource type="Texture2D" uid="uid://morfvipodgie" path="res://Assets/tile-set-1.png" id="2_awrha"]
 [ext_resource type="PackedScene" uid="uid://bug1q4ji6msk5" path="res://Circle/Circle.tscn" id="4_yf0ba"]
+[ext_resource type="PackedScene" uid="uid://cj74j8adwh3nh" path="res://Circle/DanceGame/DanceGame.tscn" id="5_0wqet"]
 [ext_resource type="PackedScene" uid="uid://bw51uqmtwoxta" path="res://UI/ui.tscn" id="5_k8do8"]
 [ext_resource type="PackedScene" uid="uid://dtax6b12brv1u" path="res://Circle/ActivationArea.tscn" id="6_yf0ba"]
 [ext_resource type="PackedScene" uid="uid://b8aqpo1ej8eb1" path="res://Spawner/spawner.tscn" id="9_oe8m4"]
@@ -12,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://lubju4ahmbep" path="res://World/Interactables/interactables_types/Mud.tres" id="12_0wqet"]
 [ext_resource type="PackedScene" uid="uid://be7fd6btqnbff" path="res://Mirror/boss_mirror.tscn" id="12_h2aik"]
 [ext_resource type="Resource" uid="uid://bmd7u2wbjp0rf" path="res://World/Interactables/interactables_types/Ore.tres" id="13_awrha"]
+[ext_resource type="PackedScene" uid="uid://dikgum4rwqa11" path="res://Circle/ClearCircle.tscn" id="14_awrha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f23eu"]
 texture = ExtResource("2_awrha")
@@ -41,8 +43,10 @@ tile_map_data = PackedByteArray("AADr//r/AAAAAAAAAADr//v/AAAAAAAAAADr//z/AAAAAAA
 tile_set = SubResource("TileSet_oeat8")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." unique_id=626537056 instance=ExtResource("1_3f78f")]
+[node name="Player" parent="." unique_id=626537056 node_paths=PackedStringArray("dance_game", "circle") instance=ExtResource("1_3f78f")]
 position = Vector2(-571, -128)
+dance_game = NodePath("../DanceGame")
+circle = NodePath("../Circle")
 
 [node name="Circle" parent="." unique_id=1205258289 instance=ExtResource("4_yf0ba")]
 position = Vector2(44, 243)
@@ -75,3 +79,11 @@ item_data = ExtResource("13_awrha")
 
 [node name="BossMirror" parent="." unique_id=2112466077 instance=ExtResource("12_h2aik")]
 position = Vector2(-568, -253)
+
+[node name="DanceGame" parent="." unique_id=848854737 instance=ExtResource("5_0wqet")]
+visible = false
+position = Vector2(-331, -140)
+
+[node name="ClearCircle" parent="." unique_id=280839688 node_paths=PackedStringArray("circle") instance=ExtResource("14_awrha")]
+position = Vector2(244, 767)
+circle = NodePath("../Circle")

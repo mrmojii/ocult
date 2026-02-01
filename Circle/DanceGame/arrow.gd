@@ -12,7 +12,7 @@ enum ArrowType
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 @export var type : ArrowType = ArrowType.Right
-var speed : float = 300.0
+var speed : float = 330.0
 var is_paused : bool = false
 var direction := Vector2(0, 1)
 var is_in_zone := false

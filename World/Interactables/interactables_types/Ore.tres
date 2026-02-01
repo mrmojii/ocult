@@ -10,4 +10,5 @@ region = Rect2(32, 48, 32, 32)
 [resource]
 script = ExtResource("2_qsjdf")
 image_texute = SubResource("AtlasTexture_qsjdf")
+id = 3
 metadata/_custom_type_script = "uid://iswjt3wphbsi"
