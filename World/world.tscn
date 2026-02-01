@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://bmd7u2wbjp0rf" path="res://World/Interactables/interactables_types/Ore.tres" id="13_awrha"]
 [ext_resource type="PackedScene" uid="uid://dikgum4rwqa11" path="res://Circle/ClearCircle.tscn" id="14_awrha"]
 [ext_resource type="Texture2D" uid="uid://chqfsuhc8agft" path="res://Assets/bubble-straight.png" id="16_oeat8"]
+[ext_resource type="Texture2D" uid="uid://cihmrimhro46n" path="res://Assets/Tutorial_.png" id="17_5xkvv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f23eu"]
 texture = ExtResource("2_awrha")
@@ -52,6 +53,13 @@ tile_map_data = PackedByteArray("AADr//r/AAAAAAAAAADr//v/AAAAAAAAAADr//z/AAAAAAA
 tile_set = SubResource("TileSet_oeat8")
 metadata/_edit_lock_ = true
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1500811440]
+position = Vector2(-497, 399)
+scale = Vector2(0.12, 0.132)
+texture = ExtResource("17_5xkvv")
+region_enabled = true
+region_rect = Rect2(994.36035, -1.5502625, 1861.6006, 2876.1238)
+
 [node name="Player" parent="." unique_id=626537056 node_paths=PackedStringArray("dance_game", "circle", "unit_move_point") instance=ExtResource("1_3f78f")]
 position = Vector2(-568, -150)
 dance_game = NodePath("../DanceGame")
@@ -76,15 +84,15 @@ position = Vector2(-729, -14)
 item_data = ExtResource("10_w47uh")
 
 [node name="SpawnerCristal" parent="." unique_id=602667705 instance=ExtResource("9_oe8m4")]
-position = Vector2(-704, 505)
+position = Vector2(-706, 558)
 item_data = ExtResource("11_lo5ox")
 
 [node name="SpawnerMud" parent="." unique_id=2015626939 instance=ExtResource("9_oe8m4")]
-position = Vector2(-704, 303)
+position = Vector2(-706, 356)
 item_data = ExtResource("12_0wqet")
 
 [node name="SpawnerOre" parent="." unique_id=2024358706 instance=ExtResource("9_oe8m4")]
-position = Vector2(-704, 404)
+position = Vector2(-706, 457)
 item_data = ExtResource("13_awrha")
 
 [node name="BossMirror" parent="." unique_id=2112466077 instance=ExtResource("12_h2aik")]
@@ -133,6 +141,14 @@ layout_mode = 2
 text = "300"
 horizontal_alignment = 1
 
-[connection signal="timeout" from="RequestTimer" to="." method="_on_request_timer_timeout"]
 [node name="UnitMovePoint" type="Marker2D" parent="." unique_id=636718218]
 position = Vector2(560, -162)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=663032750]
+position = Vector2(-371.1585, -246.07501)
+scale = Vector2(0.07835422, 0.08628117)
+texture = ExtResource("17_5xkvv")
+region_enabled = true
+region_rect = Rect2(0, 0, 974.6609, 1323.2396)
+
+[connection signal="timeout" from="RequestTimer" to="." method="_on_request_timer_timeout"]

@@ -17,12 +17,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name != "Player":
 		return
 	is_player_near = true
+	body._hovered_send = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name != "Player" : 
 		return
 	is_player_near = false
+	body._hovered_send = false
 	
 func _on_minion_sent(minion:FighterData):
 	#add  trect

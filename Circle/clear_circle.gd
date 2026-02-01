@@ -21,11 +21,13 @@ func _draw() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		is_active = true
+		body._hovered_clear = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		is_active = false
+		body._hovered_clear = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_active:
