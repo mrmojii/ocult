@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dtxk1jdo3mg7h"]
 
 [ext_resource type="Script" uid="uid://rkilg8alhkhm" path="res://Circle/DanceGame/arrow.gd" id="1_iywct"]
-[ext_resource type="Texture2D" uid="uid://dgrs08i5skihg" path="res://arrow.png" id="1_jxx4h"]
+[ext_resource type="Texture2D" uid="uid://3k7knqnygtrp" path="res://Assets/Arrows.png" id="2_iywct"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywct"]
 size = Vector2(128, 128)
@@ -10,7 +10,10 @@ size = Vector2(128, 128)
 script = ExtResource("1_iywct")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=576054674]
-texture = ExtResource("1_jxx4h")
+scale = Vector2(2, 2)
+texture = ExtResource("2_iywct")
+region_enabled = true
+region_rect = Rect2(450, 0, 62, 66.75)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=170098469]
 
