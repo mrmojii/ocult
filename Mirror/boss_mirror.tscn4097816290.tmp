@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://oqg3asfljco0" path="res://Assets/Magic_Mirror.png" id="1_3q64s"]
 [ext_resource type="Script" uid="uid://csmm44qu8ahuf" path="res://Mirror/boss_mirror.gd" id="1_ptgi5"]
 [ext_resource type="Texture2D" uid="uid://bordn5smv3au2" path="res://Assets/bubble.png" id="2_ptgi5"]
+[ext_resource type="Texture2D" uid="uid://bo7th2xrjtdvi" path="res://Assets/bones.png" id="3_adh0m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ptgi5"]
 radius = 61.008198
@@ -13,9 +14,18 @@ script = ExtResource("1_ptgi5")
 [node name="MagicMirror" type="Sprite2D" parent="." unique_id=1978475228]
 texture = ExtResource("1_3q64s")
 
-[node name="Control" type="Control" parent="." unique_id=1426659757]
-unique_name_in_owner = true
+[node name="Bubble" type="Sprite2D" parent="." unique_id=710521559]
 visible = false
+position = Vector2(-66, -44)
+texture = ExtResource("2_ptgi5")
+
+[node name="Bones" type="Sprite2D" parent="." unique_id=733986975]
+visible = false
+position = Vector2(-66, -45)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_adh0m")
+
+[node name="Control" type="Control" parent="." unique_id=1426659757]
 layout_direction = 3
 layout_mode = 3
 anchors_preset = 3
@@ -23,10 +33,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 47.0
-offset_top = -25.0
-offset_right = 47.0
-offset_bottom = -25.0
+offset_left = 51.0
+offset_top = -71.0
+offset_right = 51.0
+offset_bottom = -71.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -36,7 +46,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer" unique_id=1070057812]
-unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("2_ptgi5")
 patch_margin_left = 8
@@ -58,17 +67,45 @@ size_flags_horizontal = 4
 theme_override_constants/separation = -16
 alignment = 2
 
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=1451758049]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=796947781]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=830954478]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=85780005]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=844672569]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=1482899597]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=1154560213]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1220784679]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=599076888]
 position = Vector2(1, 100)
 shape = SubResource("CircleShape2D_ptgi5")
 
-[node name="sprite_add_timer" type="Timer" parent="." unique_id=1287171525]
-unique_name_in_owner = true
-wait_time = 0.2
-
-[connection signal="visibility_changed" from="Control" to="." method="_on_control_visibility_changed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="sprite_add_timer" to="." method="_on_sprite_add_timer_timeout"]

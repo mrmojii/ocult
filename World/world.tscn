@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://cb3xymtrx1yh" path="res://World/Interactables/interactables_types/Cristal.tres" id="11_lo5ox"]
 [ext_resource type="Resource" uid="uid://lubju4ahmbep" path="res://World/Interactables/interactables_types/Mud.tres" id="12_0wqet"]
 [ext_resource type="PackedScene" uid="uid://be7fd6btqnbff" path="res://Mirror/boss_mirror.tscn" id="12_h2aik"]
+[ext_resource type="PackedScene" uid="uid://b2ttfntv05cn1" path="res://MinionSender/minion_sender.tscn" id="13_0wqet"]
 [ext_resource type="Resource" uid="uid://bmd7u2wbjp0rf" path="res://World/Interactables/interactables_types/Ore.tres" id="13_awrha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f23eu"]
@@ -42,10 +43,7 @@ tile_set = SubResource("TileSet_oeat8")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=626537056 instance=ExtResource("1_3f78f")]
-position = Vector2(-571, -128)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1247543144]
-remote_path = NodePath("../../Camera2D")
+position = Vector2(-568, -150)
 
 [node name="Circle" parent="." unique_id=1205258289 instance=ExtResource("4_yf0ba")]
 position = Vector2(44, 243)
@@ -61,7 +59,7 @@ circle = NodePath("../Circle")
 [node name="UI" parent="CanvasLayer" unique_id=1552743313 instance=ExtResource("5_k8do8")]
 
 [node name="SpawnerMask" parent="." unique_id=243441349 instance=ExtResource("9_oe8m4")]
-position = Vector2(-727, -141)
+position = Vector2(-729, -14)
 item_data = ExtResource("10_w47uh")
 
 [node name="SpawnerCristal" parent="." unique_id=602667705 instance=ExtResource("9_oe8m4")]
@@ -78,3 +76,6 @@ item_data = ExtResource("13_awrha")
 
 [node name="BossMirror" parent="." unique_id=2112466077 instance=ExtResource("12_h2aik")]
 position = Vector2(-568, -253)
+
+[node name="MinionSender" parent="." unique_id=1951224978 instance=ExtResource("13_0wqet")]
+position = Vector2(565, -245)

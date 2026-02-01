@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bkpi0k1kbwmr3" path="res://Assets/fonts/DePixelHalbfett.otf" id="3_6aq8q"]
 
 [node name="Fight" type="Node2D" unique_id=879052435]
+z_index = 5
 script = ExtResource("1_ngwck")
 
 [node name="FighterContainer" type="Node" parent="." unique_id=125808488]
@@ -16,7 +17,6 @@ position = Vector2(250, 700)
 position = Vector2(1600, 700)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=24333742]
-layer = -1
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=111111721]
 layout_mode = 3

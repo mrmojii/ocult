@@ -58,6 +58,7 @@ func _spawn_fighter(pos:Vector2, side:FighterClass.Sides, fighter_data:FighterDa
 
 func _on_button_pressed() -> void:
 	FightEnd.emit(_result)
+	GameManager.end_fight(_result)
 
 func _on_end_checker_timeout() -> void:
 	var has_me := false

@@ -42,4 +42,5 @@ func _on_start_main_button_button_up() -> void:
 
 func _on_continue_button_button_up() -> void:
 	GameManager.state = GameManager.GAME_STATE.PLAY
+	GameManager.start_level()
 	pass # Replace with function body.

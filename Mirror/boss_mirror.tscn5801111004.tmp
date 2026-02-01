@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://oqg3asfljco0" path="res://Assets/Magic_Mirror.png" id="1_3q64s"]
 [ext_resource type="Script" uid="uid://csmm44qu8ahuf" path="res://Mirror/boss_mirror.gd" id="1_ptgi5"]
 [ext_resource type="Texture2D" uid="uid://bordn5smv3au2" path="res://Assets/bubble.png" id="2_ptgi5"]
+[ext_resource type="Texture2D" uid="uid://bo7th2xrjtdvi" path="res://Assets/bones.png" id="3_adh0m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ptgi5"]
 radius = 61.008198
@@ -36,7 +37,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer" unique_id=1070057812]
-unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("2_ptgi5")
 patch_margin_left = 8
@@ -57,6 +57,41 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = -16
 alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=1451758049]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=796947781]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=830954478]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=85780005]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=844672569]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=1482899597]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=1154560213]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1220784679]
 

@@ -17,6 +17,7 @@ script = ExtResource("1_2fwl4")
 
 [node name="MainMenu" type="Control" parent="." unique_id=1253853406]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,6 +107,7 @@ text = "Continue"
 
 [node name="PauseMenu" type="Control" parent="." unique_id=456376627]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -171,7 +173,24 @@ offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CreditsMenu/VBoxContainer" unique_id=1361982024]
+[node name="WinOrLose" type="Label" parent="CreditsMenu/VBoxContainer" unique_id=1361982024]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3sbvi")
+theme_override_font_sizes/font_size = 64
+text = "You won !
+"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CreditsMenu/VBoxContainer" unique_id=1445897973]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3sbvi")
+theme_override_font_sizes/font_size = 32
+text = "thanks for playing
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsMenu/VBoxContainer" unique_id=1777780071]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_3sbvi")
 theme_override_font_sizes/font_size = 32
@@ -180,6 +199,7 @@ text = "Done by cool people :D
 
 [node name="QuitButton" type="Button" parent="CreditsMenu/VBoxContainer" unique_id=1310148572]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_3sbvi")
 theme_override_font_sizes/font_size = 32
 text = "Quit"

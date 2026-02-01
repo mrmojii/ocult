@@ -1,6 +1,8 @@
 extends Control
 
 
+@onready var result_label = %WinOrLose
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.state_changed.connect(_on_game_state_changed)
@@ -14,6 +16,10 @@ func _process(delta: float) -> void:
 
 func _on_game_state_changed(state:GameManager.GAME_STATE):
 	if state == GameManager.GAME_STATE.END:
+		if GameManager.is_win == true :
+			result_label.text = "You won!"
+		else : 
+			result_label.text = "You lost..."
 		show()
 	else :
 		hide()

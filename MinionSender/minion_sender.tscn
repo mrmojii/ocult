@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b2ttfntv05cn1"]
+
+[ext_resource type="Script" uid="uid://7ac1h13fngq6" path="res://MinionSender/minion_sender.gd" id="1_1hk66"]
+
+[sub_resource type="Gradient" id="Gradient_rc08n"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.46641946, 0.3001565, 0.6738828, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1hk66"]
+gradient = SubResource("Gradient_rc08n")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1hk66"]
+radius = 100.84146
+
+[node name="MinionSender" type="Node2D" unique_id=1951224978]
+script = ExtResource("1_1hk66")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=95925289]
+texture = SubResource("GradientTexture2D_1hk66")
+
+[node name="Timer" type="Timer" parent="." unique_id=2014201634]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=15847073]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1553256726]
+position = Vector2(0, 63)
+shape = SubResource("CircleShape2D_1hk66")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
