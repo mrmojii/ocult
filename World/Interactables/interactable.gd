@@ -1,6 +1,8 @@
 class_name Interactable
 extends RigidBody2D
 
+const FLOATING_LABEL = preload("uid://ciqeojjvvi5lp")
+
 enum ItemType
 {
 	Item = 0,
@@ -13,6 +15,9 @@ enum ItemType
 @export var weight : float = 16000.0
 @export var type : ItemType = ItemType.Item
 @export var image : Texture2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+var power : int = 0
 
 @export var data : ItemData:
 	set(v):
@@ -68,3 +73,20 @@ func on_drop() -> void:
 	freeze = false
 	sleeping = false
 	collision_shape_2d.disabled = false
+
+func spawn_good_label() -> void:
+	var _label = FLOATING_LABEL.instantiate()
+	add_child(_label)
+	_label.make_green()
+	power += 1
+	animation_player.play("shake")
+
+func spawn_bad_label() -> void:
+	var _label = FLOATING_LABEL.instantiate()
+	add_child(_label)
+	_label.make_red()
+	
+	animation_player.play("shake")
+	
+	power -= 1
+	power = clamp(power, 0, 99999)

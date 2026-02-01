@@ -1,6 +1,8 @@
+class_name DanceGame
 extends Node2D
 
 signal MissArrow()
+signal Finished()
 
 const ARROW = preload("uid://dtxk1jdo3mg7h")
 
@@ -19,19 +21,19 @@ var min_wait_time : float = 0.1
 @onready var button_left_2: Sprite2D = $ButtonLeft2
 @onready var button_up: Sprite2D = $ButtonUp
 @onready var button_down: Sprite2D = $ButtonDown
+@onready var timer_end: Timer = $TimerEnd
 
 
 const _time_start_wait : float = 3.0
 var _time_step : float = 0.0
 var _arrows_left : int = 0
-var _is_playing := true
 var _wait_time : float = 0.0
+var _is_playing := false
+var _finished := false
 
 var _markers : Array[Marker2D]
 var _current : int = 0
 var _score : int = 0
-
-var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,9 +41,12 @@ func _ready() -> void:
 		if c is Marker2D:
 			_markers.push_back(c)
 	
-	start()
+	#start()
 
 func start() -> void:
+	_score = 0
+	label.text = "%03d" % 0
+	visible = true
 	_arrows_left = keys.size()
 	_current = 0
 	timer_start.wait_time = _time_start_wait
@@ -54,6 +59,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_start_timeout() -> void:
 	_is_playing = true
+	_finished = false
 	timer.wait_time = keys[0].time
 	timer.start()
 
@@ -67,6 +73,9 @@ func _on_timer_timeout() -> void:
 		var wait_time = keys[_current].time - keys[_current - 1].time
 		timer.wait_time = wait_time
 		timer.start()
+	else:
+		_finished = true
+		timer_end.start()
 	
 
 func _spawn_arrow() -> void:
@@ -149,11 +158,16 @@ func _unhandled_input(event: InputEvent) -> void:
 func _hit_correctly() -> void:
 	_score += 10
 	label.text = "%03d" % _score
+	PlayerManager.circle.hit_the_note()
 
 func _hit_miss() -> void:
+	if !_is_playing:
+		return
 	_score -= 10
 	_score = clamp(_score, 0, 9999999)
 	label.text = "%03d" % _score
+	
+	PlayerManager.circle.miss_the_note()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent() is DanceArrow:
@@ -169,3 +183,8 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 			MissArrow.emit()
 			_arrow.is_in_zone = false
 			_arrow.queue_free()
+
+
+func _on_timer_end_timeout() -> void:
+	_is_playing = false
+	Finished.emit()
