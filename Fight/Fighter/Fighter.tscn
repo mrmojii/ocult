@@ -9,6 +9,12 @@ radius = 49.0408
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_houfa"]
 size = Vector2(61, 120)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_houfa"]
+bg_color = Color(0.96975404, 0.11680513, 0.24452445, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrxbo"]
+bg_color = Color(0.39060357, 0.6844529, 0.33839458, 1)
+
 [node name="Fighter" type="Node2D" unique_id=141794754]
 script = ExtResource("1_houfa")
 
@@ -37,6 +43,8 @@ offset_left = 6.0
 offset_top = 17.0
 offset_right = 85.0
 offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxFlat_houfa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nrxbo")
 value = 50.0
 show_percentage = false
 
