@@ -70,6 +70,7 @@ func _create_points() -> void:
 		var _angle = deg_to_rad(angle)
 		_point.position = Vector2(sin(_angle) * radius, radius * cos(_angle)) 
 		_point.point_id = i
+		_points.push_back(_point)
 		angle -= step
 
 func on_active() -> void:
@@ -107,6 +108,9 @@ func _connect_line(point) -> void:
 		return
 	
 	_connected_points.push_back(Vector2i(point.point_id, _first_point.point_id))
+	
+	point.is_selected = true
+	_first_point.is_selected = true
 	
 	_new_line.points[1] = point.global_position
 	_new_line = null
@@ -178,6 +182,9 @@ func miss_the_note() -> void:
 	_items[_item_current].spawn_bad_label()
 
 func clear_circle() -> void:
+	for p in _points:
+		p.is_selected = false
+	
 	_connected_points.clear()
 	for c in lines.get_children():
 		if c is Line2D:
