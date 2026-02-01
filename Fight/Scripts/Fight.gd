@@ -5,22 +5,26 @@ enum Result { Unknown, Win, Lose }
 
 signal FightEnd(result:Result)
 
-const op_chars = [
-	{ "type": FighterClass.Type.Normal,  "stats": {"hp":20, "strength":10, "agility":10, "intelligence":10} },
-	{ "type": FighterClass.Type.Archer,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
-	{ "type": FighterClass.Type.Warrior, "stats": {"hp":250, "strength":10, "agility":10, "intelligence":10} },
-	{ "type": FighterClass.Type.Wizard,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
-]
-
-const my_chars = [
-	{ "type": FighterClass.Type.Normal,  "stats": {"hp":20, "strength":10, "agility":10, "intelligence":10} },
-	{ "type": FighterClass.Type.Archer,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
-	{ "type": FighterClass.Type.Warrior, "stats": {"hp":250, "strength":10, "agility":10, "intelligence":10} },
-	{ "type": FighterClass.Type.Wizard,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
-]
+var my_chars: Array[FighterData] = []
+var op_chars: Array[FighterData] = []
 
 @onready var EndPanel = %EndPanel
 @onready var TitleText = %TitleText
+
+func Start():
+	$SpawnTimer.start()
+	
+func Reset():
+	%TitleText.set_text("")
+	%EndPanel.hide()
+	$SpawnTimer.stop()
+	$EndChecker.stop()
+	op_chars.clear()
+	my_chars.clear()
+	
+	for child in $FighterContainer.get_children():
+		child.queue_free()
+	
 
 # Private var
 const _FIGHTER_SCENE := preload("res://Fight/Fighter/Fighter.tscn")
@@ -30,7 +34,7 @@ var _result: Result = Result.Unknown
 # Internal callbacks
 func _ready():
 	%EndPanel.hide()
-	$SpawnTimer.start()
+	Start()
 
 func _on_spawn_timer_timeout() -> void:
 	if _i_current_spawn >= my_chars.size() && _i_current_spawn >= op_chars.size():
@@ -46,9 +50,9 @@ func _on_spawn_timer_timeout() -> void:
 		
 	_i_current_spawn = _i_current_spawn + 1
 
-func _spawn_fighter(pos:Vector2, side:FighterClass.Sides, fighter:Variant):
+func _spawn_fighter(pos:Vector2, side:FighterClass.Sides, fighter_data:FighterData):
 	var fighter_instance = _FIGHTER_SCENE.instantiate() as FighterClass
-	fighter_instance.set_characteristic(side, fighter.type, fighter.stats)
+	fighter_instance.set_characteristic(side, fighter_data)
 	fighter_instance.position = pos
 	$FighterContainer.add_child(fighter_instance)
 
