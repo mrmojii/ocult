@@ -8,6 +8,7 @@ const UNIT = preload("uid://con7xjy3pv3iv")
 @export var dance_game : DanceGame
 @export var circle : Circle
 @export var unit_move_point : Marker2D
+@export var interact_sprite : Sprite2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -28,6 +29,8 @@ var _moving_camera_back := false
 
 var _controls_locked := false
 
+var _hovered_clear := false
+var _hovered_send := false
 
 
 func _ready() -> void:
@@ -70,6 +73,11 @@ func unhover_spawner(spawner: Spawner) -> void:
 func _process(delta: float) -> void:
 	_update_interactables()
 	_move_picked()
+	
+	if _hovered_interactalbe or _hovered_interactalbe or _hovered_point or _selected_circle or _activation_area or _hovered_spawner or _hovered_clear or _hovered_send:
+		interact_sprite.visible = true
+	else:
+		interact_sprite.visible = false
 	
 	if _is_activating and _activation_area:
 		camera.global_position = lerp(camera.global_position, _activation_area.circle.global_position + Vector2(0, 70), 0.03)
@@ -195,7 +203,6 @@ func _on_dance_finished() -> void:
 	_moving_camera_back = true
 	dance_game.visible = false
 	dance_game._score = 0
-	circle.clear_circle()
 	circle.clear_items()
 	
 	var unit = UNIT.instantiate()

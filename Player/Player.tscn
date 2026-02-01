@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bpra0uhrltjhj" path="res://Player/player.gd" id="1_q3lat"]
 [ext_resource type="Texture2D" uid="uid://bqoaukd86gbcg" path="res://Assets/Player_occult-export.png" id="2_q3lat"]
+[ext_resource type="Texture2D" uid="uid://c6dbcl3wsjugc" path="res://Assets/Interact_E.png" id="3_tok1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
 size = Vector2(64, 64)
@@ -185,10 +186,11 @@ states/run/node = SubResource("AnimationNodeBlendSpace2D_6ysni")
 states/run/position = Vector2(365, 195)
 graph_offset = Vector2(-126, 63)
 
-[node name="Player" type="CharacterBody2D" unique_id=626537056 node_paths=PackedStringArray("drop_point", "camera")]
+[node name="Player" type="CharacterBody2D" unique_id=626537056 node_paths=PackedStringArray("drop_point", "camera", "interact_sprite")]
 script = ExtResource("1_q3lat")
 drop_point = NodePath("DropPoint")
 camera = NodePath("Camera2D")
+interact_sprite = NodePath("InteractSprite")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360321690]
 scale = Vector2(0.5, 0.5)
@@ -218,3 +220,10 @@ root_node = NodePath("%AnimationTree/..")
 tree_root = SubResource("AnimationNodeStateMachine_vlldt")
 anim_player = NodePath("../AnimationPlayer")
 parameters/run/blend_position = Vector2(0.20448482, 0.09952605)
+
+[node name="InteractSprite" type="Sprite2D" parent="." unique_id=1355995768]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("3_tok1r")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
