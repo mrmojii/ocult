@@ -31,10 +31,10 @@ var FightScene = preload("res://Fight/Fight.tscn")
 enum ENNEMY_TYPE { Normal, Archer, Warrior, Wizard }
 
 var oponent_dictionnary = {
-	ENNEMY_TYPE.Normal:FighterData.Make(FighterClass.Type.Normal,10,10,10,10),
-	ENNEMY_TYPE.Archer:FighterData.Make(FighterClass.Type.Archer,15,5,20,5),
-	ENNEMY_TYPE.Warrior:FighterData.Make(FighterClass.Type.Warrior,20,20,5,5),
-	ENNEMY_TYPE.Wizard:FighterData.Make(FighterClass.Type.Wizard,10,5,5,25)
+	ENNEMY_TYPE.Normal:FighterData.Make(FighterClass.Type.Normal,50,10,10,10),
+	ENNEMY_TYPE.Archer:FighterData.Make(FighterClass.Type.Archer,100,5,30,5),
+	ENNEMY_TYPE.Warrior:FighterData.Make(FighterClass.Type.Warrior,200,30,5,5),
+	ENNEMY_TYPE.Wizard:FighterData.Make(FighterClass.Type.Wizard,100,5,5,30)
 }
 
 signal state_changed
