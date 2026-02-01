@@ -6,6 +6,9 @@ var connected := false
 
 var point_id : int = -1
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 var is_hovered : bool = false:
 	set(v):
 		is_hovered = v
@@ -18,11 +21,23 @@ var is_hovered : bool = false:
 			
 var _color := Color.BLUE
 
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, radius, _color, true)
+var is_selected : bool = false:
+	set(v):
+		is_selected = v
+		
+		if is_selected:
+			sprite_2d.visible = false
+			animated_sprite_2d.visible = true
+		else:
+			sprite_2d.visible = true
+			animated_sprite_2d.visible = false
+
+#func _draw() -> void:
+	#draw_circle(Vector2.ZERO, radius, _color, true)
 
 func _ready() -> void:
 	is_hovered = false
+	is_selected = false
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://v6cy77voqym3" path="res://white_wall.png" id="1_44edx"]
 [ext_resource type="Script" uid="uid://dhh74shfxkihs" path="res://Circle/DanceGame/dance_game.gd" id="1_uq6hg"]
 [ext_resource type="Script" uid="uid://cvdqw3tjxkbo0" path="res://Circle/DanceGame/DanceTimestamp.gd" id="2_uq6hg"]
+[ext_resource type="AudioStream" uid="uid://iryc8f8m78yx" path="res://Assets/audio/occult_sound_dance Edit 1 Export 2.ogg" id="4_41r61"]
 
 [sub_resource type="Resource" id="Resource_41r61"]
 script = ExtResource("2_uq6hg")
@@ -103,7 +104,7 @@ metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 [sub_resource type="Resource" id="Resource_1ywo4"]
 script = ExtResource("2_uq6hg")
 time = 14.608
-keys = Vector4i(1, 1, 0, 0)
+keys = Vector4i(1, 0, 0, 0)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_2y2g0"]
@@ -114,8 +115,8 @@ metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_28kfl"]
 script = ExtResource("2_uq6hg")
-time = 15.931000000000001
-keys = Vector4i(0, 1, 1, 1)
+time = 15.931
+keys = Vector4i(0, 1, 0, 0)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_j6g5o"]
@@ -145,13 +146,13 @@ metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 [sub_resource type="Resource" id="Resource_6l6n1"]
 script = ExtResource("2_uq6hg")
 time = 18.42
-keys = Vector4i(0, 1, 1, 0)
+keys = Vector4i(0, 0, 1, 0)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_56bae"]
 script = ExtResource("2_uq6hg")
 time = 18.72
-keys = Vector4i(0, 0, 1, 1)
+keys = Vector4i(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_gvj5r"]
@@ -187,9 +188,10 @@ metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44edx"]
 size = Vector2(800, 35)
 
-[node name="DanceGame" type="Node2D" unique_id=848854737]
+[node name="DanceGame" type="Node2D" unique_id=848854737 node_paths=PackedStringArray("audio")]
 script = ExtResource("1_uq6hg")
 keys = Array[ExtResource("2_uq6hg")]([SubResource("Resource_41r61"), SubResource("Resource_o6gtd"), SubResource("Resource_j2cwj"), SubResource("Resource_qg045"), SubResource("Resource_dcndd"), SubResource("Resource_i6pm8"), SubResource("Resource_thk8j"), SubResource("Resource_uq6hg"), SubResource("Resource_d23o2"), SubResource("Resource_4vhks"), SubResource("Resource_oeii1"), SubResource("Resource_3nijj"), SubResource("Resource_2q67d"), SubResource("Resource_ky883"), SubResource("Resource_yt0ic"), SubResource("Resource_c75ha"), SubResource("Resource_1ywo4"), SubResource("Resource_2y2g0"), SubResource("Resource_28kfl"), SubResource("Resource_j6g5o"), SubResource("Resource_yvt3b"), SubResource("Resource_1es8t"), SubResource("Resource_7phqm"), SubResource("Resource_6l6n1"), SubResource("Resource_56bae"), SubResource("Resource_gvj5r"), SubResource("Resource_d7lee"), SubResource("Resource_8g4hf"), SubResource("Resource_4epbf"), SubResource("Resource_66e7f")])
+audio = NodePath("AudioStreamPlayer2D")
 
 [node name="EndLine" type="Node2D" parent="." unique_id=339151294]
 position = Vector2(412, 756)
@@ -249,8 +251,16 @@ texture = ExtResource("1_44edx")
 wait_time = 2.6
 one_shot = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=354321011]
+stream = ExtResource("4_41r61")
+
+[node name="TimerMusic" type="Timer" parent="." unique_id=473845919]
+wait_time = 2.1999999999999997
+one_shot = true
+
 [connection signal="area_entered" from="EndLine/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="EndLine/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerStart" to="." method="_on_timer_start_timeout"]
 [connection signal="timeout" from="TimerEnd" to="." method="_on_timer_end_timeout"]
+[connection signal="timeout" from="TimerMusic" to="." method="_on_timer_music_timeout"]

@@ -105,7 +105,7 @@ func get_unit_class() -> FighterClass.Type:
 		return FighterClass.Type.Normal
 	
 	if stats_str > 20 and stats_str > stats_agi and stats_str > stats_int:
-		stats_health = 150
+		stats_health = 250
 		return FighterClass.Type.Warrior
 
 	if stats_agi > 20 and stats_agi > stats_str and stats_agi > stats_int:
@@ -116,7 +116,7 @@ func get_unit_class() -> FighterClass.Type:
 	
 	var random = rng.randi_range(1, 3)
 	if random == FighterClass.Type.Warrior:
-		stats_health = 150
+		stats_health = 250
 	return random
 
 

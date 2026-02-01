@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://iryc8f8m78yx"
+path="res://.godot/imported/occult_sound_dance Edit 1 Export 2.ogg-618ab9480550e9d99a58b5ff3908b14c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/audio/occult_sound_dance Edit 1 Export 2.ogg"
+dest_files=["res://.godot/imported/occult_sound_dance Edit 1 Export 2.ogg-618ab9480550e9d99a58b5ff3908b14c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

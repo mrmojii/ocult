@@ -1,9 +1,52 @@
 [gd_scene format=3 uid="uid://743mwpx3gf6w"]
 
 [ext_resource type="Script" uid="uid://drxguxpiwdmku" path="res://Circle/point.gd" id="1_1273d"]
+[ext_resource type="Texture2D" uid="uid://clx1a8cbgdato" path="res://Assets/Candle_off.png" id="2_ey4ld"]
+[ext_resource type="Texture2D" uid="uid://o3xudnuopkfv" path="res://Assets/Candle_on.png" id="3_8mqub"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1273d"]
 radius = 30.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rxey"]
+atlas = ExtResource("3_8mqub")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt7x0"]
+atlas = ExtResource("3_8mqub")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d20rx"]
+atlas = ExtResource("3_8mqub")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn2it"]
+atlas = ExtResource("3_8mqub")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ss8bs"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rxey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt7x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d20rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn2it")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="Point" type="Node2D" unique_id=1496123238]
 script = ExtResource("1_1273d")
@@ -12,6 +55,16 @@ script = ExtResource("1_1273d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2127098035]
 shape = SubResource("CircleShape2D_1273d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=134807551]
+texture = ExtResource("2_ey4ld")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=446261826]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ss8bs")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.8592238
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
