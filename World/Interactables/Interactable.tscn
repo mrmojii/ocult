@@ -12,12 +12,13 @@ size = Vector2(32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_f513q"]
 radius = 75.0
 
-[node name="Interactable" type="RigidBody2D" unique_id=1499809643]
+[node name="Interactable" type="RigidBody2D" unique_id=1499809643 node_paths=PackedStringArray("sprite_2d")]
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_f513q")
 gravity_scale = 0.0
 freeze_mode = 1
 script = ExtResource("1_f513q")
+sprite_2d = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2129592002]
 scale = Vector2(0.234375, 0.265625)

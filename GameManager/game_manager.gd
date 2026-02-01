@@ -30,3 +30,4 @@ func _process(delta: float) -> void:
 func init():
 	self.state = GAME_STATE.START
 	
+	

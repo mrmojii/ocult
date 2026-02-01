@@ -15,6 +15,8 @@ var _selected_point : Point
 var _selected_circle : Circle
 var _activation_area : ActivationArea
 
+var _hovered_spawner : Spawner
+
 var _is_activating := false
 var _activation_time : float = 0.0
 var _moving_camera_back := false
@@ -42,6 +44,16 @@ func unhover_point(point : Point) -> void:
 	if _hovered_point and _hovered_point == point:
 		_hovered_point = null
 
+func hover_spawner(spawner : Spawner) -> void:
+	if _hovered_spawner:
+		_hovered_spawner.on_unhover()
+	_hovered_spawner = spawner
+
+func unhover_spawner(spawner : Spawner) -> void:
+	spawner.on_unhover()
+	if spawner == _hovered_spawner:
+		_hovered_spawner = null
+
 func _process(delta: float) -> void:
 	_update_interactables()
 	_move_picked()
@@ -55,7 +67,7 @@ func _process(delta: float) -> void:
 		camera.zoom = lerp(camera.zoom, Vector2(3.0,3.0), 0.03)
 		if global_position.distance_to(camera.global_position) <= 1.0:
 			_moving_camera_back = false
-			camera.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
+			#camera.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
 
 func _move_picked() -> void:
 	if !_picked_interactable:
@@ -101,6 +113,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not _interact_interactable():
 			_interact_point()
 			_interact_activation_area()
+			_interact_spawner()
 	
 	if event.is_action_released("Interact"):
 		_release_activation_area()
@@ -114,10 +127,13 @@ func _interact_interactable() -> bool:
 			_hovered_interactalbe.on_hover()
 		return true
 	elif _hovered_interactalbe:
-		_hovered_interactalbe.on_interact()
-		_picked_interactable = _hovered_interactalbe
+		pickup_interactable(_hovered_interactalbe)
 		return true
 	return false
+
+func pickup_interactable(item : Interactable) -> void:
+	item.on_interact()
+	_picked_interactable = item
 
 func _interact_point() -> void:
 	if !_hovered_point:
@@ -125,6 +141,11 @@ func _interact_point() -> void:
 	
 	_hovered_point.select_point()
 	
+func _interact_spawner() -> void:
+	if !_hovered_spawner:
+		return
+	
+	_hovered_spawner.on_interact()
 
 func _interact_activation_area() ->  void:
 	if !_activation_area:
@@ -146,7 +167,7 @@ func _release_activation_area() -> void:
 		print("too early!")
 	_is_activating = false
 	_moving_camera_back = true
-	camera.process_callback = Camera2D.CAMERA2D_PROCESS_IDLE
+	#camera.process_callback = Camera2D.CAMERA2D_PROCESS_IDLE
 
 func _on_activation_area_timer() -> void:
 	print("timer")

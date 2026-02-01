@@ -14,14 +14,22 @@ enum ItemType
 @export var type : ItemType = ItemType.Item
 @export var image : Texture2D
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@export var data : ItemData:
+	set(v):
+		data = v
+		if !data:
+			return
+		sprite_2d.texture = data.image_texute
+		sprite_2d.scale = data.texture_scale
+
+@export var sprite_2d : Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var is_picked := false
 
 func _ready() -> void:
-	if image:
-		sprite_2d.texture = image
+	if data:
+		sprite_2d.texture = data.image_texute
 
 func add_push(force: float, direction : Vector2) -> void:
 	apply_impulse(direction * push_force * force)

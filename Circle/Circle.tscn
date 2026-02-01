@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dw0a0ktds0ceo" path="res://Circle/circle.gd" id="1_53ve8"]
 [ext_resource type="Script" uid="uid://bjgb7kbdyivef" path="res://Circle/Rules/CircleRule.gd" id="2_th0qy"]
 [ext_resource type="Resource" uid="uid://bo53yoxpk7ufh" path="res://Circle/Rules/Pentagram.tres" id="3_odtd8"]
+[ext_resource type="Texture2D" uid="uid://vm6sg87povlh" path="res://Assets/Blood_Trail_2.png" id="4_bflbg"]
+[ext_resource type="Texture2D" uid="uid://wopegxuxcrc4" path="res://Assets/Circle.png" id="4_odtd8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_th0qy"]
 radius = 95.0
@@ -23,6 +25,7 @@ radius = 50.0
 radius = 50.0
 
 [node name="Circle" type="Node2D" unique_id=1205258289 node_paths=PackedStringArray("line_base", "lines")]
+z_index = -1
 script = ExtResource("1_53ve8")
 line_base = NodePath("Line2DBase")
 lines = NodePath("Lines")
@@ -30,7 +33,11 @@ rules = Array[ExtResource("2_th0qy")]([ExtResource("3_odtd8")])
 
 [node name="Line2DBase" type="Line2D" parent="." unique_id=580386121]
 points = PackedVector2Array(0, 0, 0, 0)
-default_color = Color(1, 0, 0, 1)
+width = 32.0
+texture = ExtResource("4_bflbg")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="Lines" type="Node2D" parent="." unique_id=813654773]
 
@@ -58,3 +65,6 @@ shape = SubResource("CircleShape2D_gnkcn")
 [node name="CollisionBotRight" type="CollisionShape2D" parent="Pentagram" unique_id=1090636448]
 position = Vector2(118, 150)
 shape = SubResource("CircleShape2D_0yhp4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=482240346]
+texture = ExtResource("4_odtd8")

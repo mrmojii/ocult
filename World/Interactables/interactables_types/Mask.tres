@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://jv53e01oynf0"]
+
+[ext_resource type="Script" uid="uid://iswjt3wphbsi" path="res://World/Interactables/item_data.gd" id="1_8pax3"]
+
+[sub_resource type="Gradient" id="Gradient_8pax3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h6xw5"]
+gradient = SubResource("Gradient_8pax3")
+
+[resource]
+script = ExtResource("1_8pax3")
+image_texute = SubResource("GradientTexture2D_h6xw5")
+name = "Mask"
+metadata/_custom_type_script = "uid://iswjt3wphbsi"

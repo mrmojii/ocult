@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://be7fd6btqnbff"]
+
+[ext_resource type="Texture2D" uid="uid://oqg3asfljco0" path="res://Assets/Magic_Mirror.png" id="1_3q64s"]
+[ext_resource type="Texture2D" uid="uid://bordn5smv3au2" path="res://Assets/bubble.png" id="2_ptgi5"]
+[ext_resource type="Texture2D" uid="uid://bo7th2xrjtdvi" path="res://Assets/bones.png" id="3_adh0m"]
+
+[node name="BossMirror" type="Node2D" unique_id=2112466077]
+
+[node name="MagicMirror" type="Sprite2D" parent="." unique_id=1978475228]
+texture = ExtResource("1_3q64s")
+
+[node name="Bubble" type="Sprite2D" parent="." unique_id=710521559]
+visible = false
+position = Vector2(-66, -44)
+texture = ExtResource("2_ptgi5")
+
+[node name="Bones" type="Sprite2D" parent="." unique_id=733986975]
+visible = false
+position = Vector2(-66, -45)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_adh0m")
+
+[node name="Control" type="Control" parent="." unique_id=1426659757]
+layout_direction = 3
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = -71.0
+offset_right = 51.0
+offset_bottom = -71.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1373124412]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer" unique_id=1070057812]
+layout_mode = 2
+texture = ExtResource("2_ptgi5")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer" unique_id=304914812]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer" unique_id=1230863438]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = -16
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=1451758049]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=796947781]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=830954478]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=85780005]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=844672569]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=1482899597]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="Control/MarginContainer/MarginContainer/HBoxContainer" unique_id=1154560213]
+layout_mode = 2
+texture = ExtResource("3_adh0m")
+expand_mode = 2
