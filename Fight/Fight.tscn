@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c7grk1iof8xid" path="res://Fight/Assets/background.png" id="1_bv4rg"]
 [ext_resource type="Script" uid="uid://bcy8id4cxpdyq" path="res://Fight/Scripts/Fight.gd" id="1_ngwck"]
+[ext_resource type="FontFile" uid="uid://bkpi0k1kbwmr3" path="res://Assets/fonts/DePixelHalbfett.otf" id="3_6aq8q"]
 
 [node name="Fight" type="Node2D" unique_id=879052435]
 script = ExtResource("1_ngwck")
@@ -39,6 +40,39 @@ size_flags_vertical = 4
 texture = ExtResource("1_bv4rg")
 expand_mode = 1
 
+[node name="EndPanel" type="CenterContainer" parent="CanvasLayer/Control" unique_id=2045184296]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/EndPanel" unique_id=1444448294]
+layout_mode = 2
+
+[node name="TitleText" type="Label" parent="CanvasLayer/Control/EndPanel/HBoxContainer" unique_id=111580677]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6aq8q")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/EndPanel/HBoxContainer" unique_id=725128481]
+layout_mode = 2
+theme_override_constants/separation = 66
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/EndPanel/HBoxContainer" unique_id=1650905083]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6aq8q")
+theme_override_font_sizes/font_size = 32
+text = "Back to work"
+
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1604878597]
 
+[node name="EndChecker" type="Timer" parent="." unique_id=1936278384]
+
+[connection signal="pressed" from="CanvasLayer/Control/EndPanel/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="EndChecker" to="." method="_on_end_checker_timeout"]
