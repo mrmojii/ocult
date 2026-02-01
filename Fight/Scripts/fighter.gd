@@ -1,19 +1,8 @@
 class_name FighterClass
 extends Node2D
 
-@export var hp: int = 100
-@export var speed_x: float = 50.0
-
 enum Type  { Normal, Archer, Warrior, Wizard }
 enum Sides { Me, Op }
-
-# --- Tuning ---
-const SHOT_RANGE := {
-	Type.Normal:  50.0,
-	Type.Archer:  600.0,
-	Type.Warrior: 50.0,
-	Type.Wizard:  300.0,
-}
 
 const TEXTURES := {
 	Sides.Me: {
@@ -29,6 +18,42 @@ const TEXTURES := {
 		Type.Wizard:  preload("res://Fight/assets/wizard_op.png"),
 	}
 }
+# --- Tuning ---
+@export var speed_x: float = 50.0
+
+@export var SHOT_RANGE := {
+	Type.Normal:  50.0,
+	Type.Archer:  600.0,
+	Type.Warrior: 50.0,
+	Type.Wizard:  300.0,
+}
+
+@export var AFFINITY := {
+	Type.Archer: {
+		Type.Wizard:  1.5,
+		Type.Warrior: 0.5,
+		Type.Archer:  1.0,
+		Type.Normal:  1.0,
+	},
+	Type.Wizard: {
+		Type.Warrior: 1.5,
+		Type.Archer:  0.5,
+		Type.Wizard:  1.0,
+		Type.Normal:  1.0,
+	},
+	Type.Warrior: {
+		Type.Archer:  1.5,
+		Type.Wizard:  0.5,
+		Type.Warrior: 1.0,
+		Type.Normal:  1.0,
+	},
+	Type.Normal: {
+		Type.Archer:  1.0,
+		Type.Wizard:  1.0,
+		Type.Warrior: 1.0,
+		Type.Normal:  1.0,
+	},
+}
 
 # --- State ---
 var _type: Type = Type.Normal
@@ -36,31 +61,38 @@ var _side: Sides = Sides.Me
 var _attack_tween: Tween
 var _damage_tween: Tween
 var _target: FighterClass
+var _current_hp: int = 0
+var _stats: Variant
 
 # ---------- Public API ----------
-func take_hit(dmg: int) -> void:
-	hp -= dmg
-	$Health.set_value(hp)
-	_damage_anim()
-	
-	if hp <= 0:
-		queue_free()
-		
-func set_characteristic(side: Sides, type: Type) -> void:
+func set_characteristic(side: Sides, type: Type, stats: Variant) -> void:
 	_type = type
 	_side = side
+	_stats = stats
+	_current_hp = _stats.hp
 	_apply_shot_radius()
 	_apply_visuals()
+	
+func take_hit(dmg: int) -> void:
+	_current_hp -= dmg
+	$Health.set_value(100.0 * _current_hp / _stats.hp)
+	_damage_anim()
+	
+	if _current_hp <= 0:
+		queue_free()
 
 func get_height() -> int:
 	return $Sprite.texture.get_height() if $Sprite.texture else 0
 
 func get_side() -> Sides:
 	return _side
+	
+func get_type() -> Type:
+	return _type
 
 # ---------- Lifecycle ----------
 func _ready() -> void:
-	$Health.set_value(hp)
+	$Health.set_value(100.0)
 	$TimerAttack.wait_time = _rand_range(0.95, 1.05)
 
 func _process(delta: float) -> void:
@@ -73,6 +105,17 @@ func _process(delta: float) -> void:
 		_move_forward(delta)
 
 # ---------- Combat logic ----------
+func _get_hit_value() -> int:
+	var dmg := 0.0
+
+	match _type:
+		Type.Normal:  dmg = 5 + _stats.strength
+		Type.Warrior: dmg = 8 + _stats.strength * 1.5
+		Type.Archer:  dmg = (4 + _stats.agility * 1.2) * randf_range(0.8, 1.2)
+		Type.Wizard:  dmg = (3 + _stats.intelligence * 2.0) * randf_range(0.65, 1.35)
+		
+	return int(round(dmg))
+	
 func get_closest_in_range() -> FighterClass:
 	var best: FighterClass = null
 	var best_d2 := INF
@@ -91,7 +134,7 @@ func get_closest_in_range() -> FighterClass:
 		if d2 < best_d2:
 			best_d2 = d2
 			best = f
-
+			
 	return best
 
 # ---------- Movement / timer ----------
@@ -126,7 +169,7 @@ func _on_timer_attack_timeout() -> void:
 		return
 
 	_play_attack_anim()
-	_target.take_hit(10)
+	_target.take_hit(_get_hit_value() * AFFINITY[_type][_target.get_type()])
 	
 # ---------- Animations --------------
 func _play_attack_anim() -> void:

@@ -6,16 +6,16 @@ enum Result { Unknown, Win, Lose }
 signal FightEnd(result:Result)
 
 const op_chars = [
-	{ "type": FighterClass.Type.Normal,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
+	{ "type": FighterClass.Type.Normal,  "stats": {"hp":20, "strength":10, "agility":10, "intelligence":10} },
 	{ "type": FighterClass.Type.Archer,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
-	{ "type": FighterClass.Type.Warrior, "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
+	{ "type": FighterClass.Type.Warrior, "stats": {"hp":250, "strength":10, "agility":10, "intelligence":10} },
 	{ "type": FighterClass.Type.Wizard,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
 ]
 
 const my_chars = [
-	{ "type": FighterClass.Type.Normal,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
+	{ "type": FighterClass.Type.Normal,  "stats": {"hp":20, "strength":10, "agility":10, "intelligence":10} },
 	{ "type": FighterClass.Type.Archer,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
-	{ "type": FighterClass.Type.Warrior, "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
+	{ "type": FighterClass.Type.Warrior, "stats": {"hp":250, "strength":10, "agility":10, "intelligence":10} },
 	{ "type": FighterClass.Type.Wizard,  "stats": {"hp":100, "strength":10, "agility":10, "intelligence":10} },
 ]
 
@@ -48,7 +48,7 @@ func _on_spawn_timer_timeout() -> void:
 
 func _spawn_fighter(pos:Vector2, side:FighterClass.Sides, fighter:Variant):
 	var fighter_instance = _FIGHTER_SCENE.instantiate() as FighterClass
-	fighter_instance.set_characteristic(side, fighter.type)
+	fighter_instance.set_characteristic(side, fighter.type, fighter.stats)
 	fighter_instance.position = pos
 	$FighterContainer.add_child(fighter_instance)
 
@@ -59,7 +59,7 @@ func _on_end_checker_timeout() -> void:
 	var has_me := false
 	var has_op := false
 
-	for child in get_children():
+	for child in $FighterContainer.get_children():
 		if child is not FighterClass or child.is_queued_for_deletion():
 			continue
 
@@ -73,20 +73,20 @@ func _on_end_checker_timeout() -> void:
 			return
 			
 	# Decide result
-	if not has_me and not has_op: _win()   # no fighters left -> win (as you requested)
+	if not has_me and not has_op: _win() # no fighters left -> win (as you requested)
 	elif has_me and not has_op: _win()   # only my side left -> win
-	elif has_op and not has_me: _lose()  # only opponent left -> lost		
+	elif has_op and not has_me: _lose()  # only opponent left -> lost
 
 func _win():
 	_result = Result.Win
 	
 	$EndChecker.stop()
-	%TitleText.set_value("The dungeon is safe")
+	%TitleText.set_text("The dungeon is safe")
 	%EndPanel.show()
 	
 func _lose():
 	_result = Result.Lose
 	
 	$EndChecker.stop()
-	%TitleText.set_value("You have failed your duty")
+	%TitleText.set_text("You have failed your duty")
 	%EndPanel.show()
