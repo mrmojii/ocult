@@ -7,6 +7,7 @@ signal Finished()
 const ARROW = preload("uid://dtxk1jdo3mg7h")
 
 @export var keys : Array[DanceTimestamp]
+@export var audio : AudioStreamPlayer2D
 
 var arrows_amount : int = 20
 var max_wait_time : float = 1.0
@@ -22,6 +23,7 @@ var min_wait_time : float = 0.1
 @onready var button_up: Sprite2D = $ButtonUp
 @onready var button_down: Sprite2D = $ButtonDown
 @onready var timer_end: Timer = $TimerEnd
+@onready var timer_music: Timer = $TimerMusic
 
 
 const _time_start_wait : float = 0.1
@@ -51,6 +53,7 @@ func start() -> void:
 	_current = 0
 	timer_start.wait_time = _time_start_wait
 	timer_start.start()
+	timer_music.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -188,3 +191,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func _on_timer_end_timeout() -> void:
 	_is_playing = false
 	Finished.emit()
+
+
+func _on_timer_music_timeout() -> void:
+	audio.play()

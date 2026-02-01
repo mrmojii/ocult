@@ -44,7 +44,7 @@ signal minion_added
 
 var current_request:Array[ENNEMY_TYPE]
 var minion_roster: Array[FighterData] = []
-var request_duration:int = 300
+var request_duration:int = 600
 var request_remaining_time:int = request_duration:
 	set(value):
 		request_remaining_time = value
