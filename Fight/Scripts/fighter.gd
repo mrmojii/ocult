@@ -6,16 +6,16 @@ enum Sides { Me, Op }
 
 const TEXTURES := {
 	Sides.Me: {
-		Type.Normal:  preload("res://Fight/Assets/normal.png"),
-		Type.Archer:  preload("res://Fight/Assets/archer.png"),
-		Type.Warrior: preload("res://Fight/Assets/warrior.png"),
-		Type.Wizard:  preload("res://Fight/Assets/wizard.png"),
+		Type.Normal:  preload("res://Fight/Assets/Skeleton-export.png"),
+		Type.Archer:  preload("res://Fight/Assets/Archer_Skeleton-export.png"),
+		Type.Warrior: preload("res://Fight/Assets/Warrior_Skeleton-export.png"),
+		Type.Wizard:  preload("res://Fight/Assets/Wizard_Skeleton-export.png"),
 	},
 	Sides.Op: {
-		Type.Normal:  preload("res://Fight/Assets/normal_op.png"),
-		Type.Archer:  preload("res://Fight/Assets/archer_op.png"),
-		Type.Warrior: preload("res://Fight/Assets/warrior_op.png"),
-		Type.Wizard:  preload("res://Fight/Assets/wizard_op.png"),
+		Type.Normal:  preload("res://Fight/Assets/Skeleton-export.png"),
+		Type.Archer:  preload("res://Fight/Assets/Archer_Skeleton-export.png"),
+		Type.Warrior: preload("res://Fight/Assets/Warrior_Skeleton-export.png"),
+		Type.Wizard:  preload("res://Fight/Assets/Wizard_Skeleton-export.png"),
 	}
 }
 # --- Tuning ---

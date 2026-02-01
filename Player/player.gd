@@ -9,6 +9,9 @@ const UNIT = preload("uid://con7xjy3pv3iv")
 @export var circle : Circle
 @export var unit_move_point : Marker2D
 
+@onready var animation_tree = %AnimationTree
+@onready var animationState = animation_tree.get("parameters/playback")
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -109,7 +112,14 @@ func _physics_process(delta: float) -> void:
 	direction.x = Input.get_axis("MoveLeft", "MoveRight")
 	direction.y = Input.get_axis("MoveUp", "MoveDown")
 	direction = direction.normalized()
-
+	
+	animation_tree.active = true
+	
+	if direction != Vector2.ZERO:
+		animation_tree.set("parameters/run/blend_position",direction)
+		animationState.travel("run")
+	else: 
+		animationState.travel("idle")
 	if !_controls_locked:
 		velocity = SPEED * direction
 
@@ -209,6 +219,7 @@ func _on_dance_finished() -> void:
 	
 	unit.timer.start()
 	unit.get_unit_class()
+	unit.set_sprite()
 	
 func hover_activation_area(area: ActivationArea) -> void:
 	_activation_area = area

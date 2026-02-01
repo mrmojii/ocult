@@ -7,6 +7,23 @@ extends Node2D
 
 @export var timer : Timer
 
+var skeleton_sprite_dictionary = {
+	FighterClass.Type.Normal:preload("res://Assets/Skeleton.png"),
+	FighterClass.Type.Warrior:preload("res://Assets/Warrior_Skeleton.png"),
+	FighterClass.Type.Archer:preload("res://Assets/Archer_Skeleton.png"),
+	FighterClass.Type.Wizard:preload("res://Assets/Wizard_Skeleton.png"),
+}
+
+var skeleton_mask_dictionary = {
+	FighterClass.Type.Normal:preload("res://Assets/Blank_Mask.png"),
+	FighterClass.Type.Warrior:preload("res://Assets/Warrior_Mask.png"),
+	FighterClass.Type.Archer:preload("res://Assets/Archer_Mask.png"),
+	FighterClass.Type.Wizard:preload("res://Assets/Wizard_Mask.png"),
+}
+
+@onready var class_mask_sprite = %SpriteMask
+@onready var class_sprite = %ClassSprite
+
 var move_point : Vector2 = Vector2.ZERO
 
 var _is_moving := false
@@ -24,6 +41,8 @@ func _ready() -> void:
 	set_str(25)
 	set_agi(60)
 	set_int(20)
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -99,3 +118,10 @@ func get_unit_class() -> FighterClass.Type:
 	if random == FighterClass.Type.Warrior:
 		stats_health = 150
 	return random
+
+
+func set_sprite() -> void:
+	var type : FighterClass.Type = get_unit_class()
+	class_mask_sprite.texture = skeleton_mask_dictionary.get(type)
+	class_sprite.texture = skeleton_sprite_dictionary.get(type)
+	# do something here

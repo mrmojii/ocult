@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://con7xjy3pv3iv"]
 
 [ext_resource type="Script" uid="uid://ckiucdwagwlf6" path="res://Units/unit.gd" id="1_00fr1"]
-[ext_resource type="Texture2D" uid="uid://w2g3lyp1iqpy" path="res://icon.svg" id="1_j3ort"]
+[ext_resource type="Texture2D" uid="uid://cfp6hd85bh2jf" path="res://Assets/Skeleton_Base.png" id="2_00fr1"]
+[ext_resource type="Texture2D" uid="uid://bklwssfif7joc" path="res://Assets/Skeleton.png" id="3_b05e6"]
+[ext_resource type="Texture2D" uid="uid://dqxxbuab4v3bk" path="res://Assets/Blank_Mask.png" id="4_wa7hq"]
 
 [node name="Unit" type="Node2D" unique_id=890764628 node_paths=PackedStringArray("label_str", "label_agi", "label_int", "timer")]
 script = ExtResource("1_00fr1")
@@ -11,7 +13,18 @@ label_int = NodePath("Panel/VBoxContainer/LabelInt")
 timer = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1180316581]
-texture = ExtResource("1_j3ort")
+texture = ExtResource("2_00fr1")
+hframes = 4
+
+[node name="ClassSprite" type="Sprite2D" parent="." unique_id=47838460]
+unique_name_in_owner = true
+texture = ExtResource("3_b05e6")
+hframes = 4
+
+[node name="SpriteMask" type="Sprite2D" parent="." unique_id=1539530872]
+unique_name_in_owner = true
+position = Vector2(0, -18)
+texture = ExtResource("4_wa7hq")
 
 [node name="Panel" type="Panel" parent="." unique_id=1330203029]
 offset_left = 87.0

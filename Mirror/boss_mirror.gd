@@ -9,10 +9,10 @@ var player_in_front = false
 
 var display = []
 var texture_dictionnary = {
-	GameManager.ENNEMY_TYPE.Normal: preload("res://Fight/Assets/normal_op.png"),
-	GameManager.ENNEMY_TYPE.Archer: preload("res://Fight/Assets/archer_op.png"),
-	GameManager.ENNEMY_TYPE.Warrior: preload("res://Fight/Assets/warrior_op.png"),
-	GameManager.ENNEMY_TYPE.Wizard: preload("res://Fight/Assets/wizard_op.png"),
+	GameManager.ENNEMY_TYPE.Normal: preload("res://Fight/Assets/Skeleton-export.png"),
+	GameManager.ENNEMY_TYPE.Archer: preload("res://Fight/Assets/Archer_Skeleton-export.png"),
+	GameManager.ENNEMY_TYPE.Warrior: preload("res://Fight/Assets/Warrior_Skeleton-export.png"),
+	GameManager.ENNEMY_TYPE.Wizard: preload("res://Fight/Assets/Wizard_Skeleton-export.png"),
 }
 
 func _ready() -> void:
