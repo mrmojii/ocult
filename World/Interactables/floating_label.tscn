@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ciqeojjvvi5lp"]
+
+[ext_resource type="Script" uid="uid://y0x1usxgy4yh" path="res://World/Interactables/floating_label.gd" id="1_cwwk6"]
+
+[node name="FloatingLabel" type="Node2D" unique_id=1117512595 node_paths=PackedStringArray("label")]
+script = ExtResource("1_cwwk6")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=196260842]
+offset_right = 40.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 32
+text = "+1"
+
+[node name="Timer" type="Timer" parent="." unique_id=96993251]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

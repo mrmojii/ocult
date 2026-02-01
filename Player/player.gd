@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @export var drop_point: Marker2D
 @export var camera: Camera2D
+@export var dance_game : DanceGame
+@export var circle : Circle
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -22,6 +24,10 @@ var _activation_time: float = 0.0
 var _moving_camera_back := false
 
 var _controls_locked := false
+
+func _ready() -> void:
+	dance_game.Finished.connect(_on_dance_finished)
+	PlayerManager.circle = circle
 
 func add_interactable(obj: Interactable) -> void:
 	_interactables.push_back(obj)
@@ -171,8 +177,21 @@ func _release_activation_area() -> void:
 	_moving_camera_back = true
 
 func _on_activation_area_timer() -> void:
-	print("timer")
-	_controls_locked = true
+	if circle.has_pentagram:
+		if circle.has_mask_in_the_center():
+			_controls_locked = true
+			circle.update_items_pentagram()
+			dance_game.start()
+			
+
+func _on_dance_finished() -> void:
+	_controls_locked = false
+	_is_activating = false
+	_moving_camera_back = true
+	dance_game.visible = false
+	dance_game._score = 0
+	circle.clear_circle()
+	circle.clear_items()
 	
 func hover_activation_area(area: ActivationArea) -> void:
 	_activation_area = area
