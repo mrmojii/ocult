@@ -1,9 +1,10 @@
 class_name FighterClass
 extends Node2D
 
+@export var hp: int = 100
 @export var speed_x: float = 50.0
 
-enum Type { Normal, Archer, Warrior, Wizard }
+enum Type  { Normal, Archer, Warrior, Wizard }
 enum Sides { Me, Op }
 
 # --- Tuning ---
@@ -34,14 +35,22 @@ var _type: Type = Type.Normal
 var _side: Sides = Sides.Me
 var _attack_tween: Tween
 var _damage_tween: Tween
-
+var _target: FighterClass
 
 # ---------- Public API ----------
+func take_hit(dmg: int) -> void:
+	hp -= dmg
+	$Health.set_value(hp)
+	_damage_anim()
+	
+	if hp <= 0:
+		queue_free()
+		
 func set_characteristic(side: Sides, type: Type) -> void:
 	_type = type
 	_side = side
-	_apply_visuals()
 	_apply_shot_radius()
+	_apply_visuals()
 
 func get_height() -> int:
 	return $Sprite.texture.get_height() if $Sprite.texture else 0
@@ -49,33 +58,41 @@ func get_height() -> int:
 func get_side() -> Sides:
 	return _side
 
-
 # ---------- Lifecycle ----------
 func _ready() -> void:
+	$Health.set_value(hp)
 	$TimerAttack.wait_time = _rand_range(0.95, 1.05)
 
 func _process(delta: float) -> void:
-	var in_range := _has_enemy_in_range()
-
-	if in_range:
+	_target = get_closest_in_range()
+	
+	if _target != null:
 		_ensure_attack_timer_running()
 	else:
 		_stop_attack_timer()
 		_move_forward(delta)
 
-
 # ---------- Combat logic ----------
-func _has_enemy_in_range() -> bool:
+func get_closest_in_range() -> FighterClass:
+	var best: FighterClass = null
+	var best_d2 := INF
+
 	for area in $ShotCollision.get_overlapping_areas():
 		if area.name != "HitBox":
 			continue
 
-		var fighter := area.get_parent() as FighterClass
-		if fighter != null and fighter._side != _side:
-			return true
+		var f := area.get_parent() as FighterClass
+		if f == null or f._side == _side:
+			continue
+		if not is_instance_valid(f):
+			continue
 
-	return false
+		var d2 := global_position.distance_squared_to(f.global_position)
+		if d2 < best_d2:
+			best_d2 = d2
+			best = f
 
+	return best
 
 # ---------- Movement / timer ----------
 func _move_forward(delta: float) -> void:
@@ -90,7 +107,6 @@ func _stop_attack_timer() -> void:
 	if not $TimerAttack.is_stopped():
 		$TimerAttack.stop()
 
-
 # ---------- Visual setup ----------
 func _apply_visuals() -> void:
 	$Sprite.texture = TEXTURES[_side][_type]
@@ -102,19 +118,26 @@ func _apply_shot_radius() -> void:
 	if circle:
 		circle.radius = SHOT_RANGE[_type]
 
-
 # ---------- Attack animation ----------
 func _on_timer_attack_timeout() -> void:
-	# prevent stacking tweens
+	_target = get_closest_in_range()
+	if _target == null:
+		_stop_attack_timer()
+		return
+
+	_play_attack_anim()
+	_target.take_hit(1)
+	
+# ---------- Animations --------------
+func _play_attack_anim() -> void:
 	if _attack_tween and _attack_tween.is_valid():
 		_attack_tween.kill()
 
 	_attack_tween = create_tween()
 	_attack_tween.tween_property(self, "scale", Vector2(1.2, 0.8), 0.06)
 	_attack_tween.tween_property(self, "scale", Vector2.ONE, 0.08)
-	
-# ---------- Damage animation --------------
-func _on_damage() -> void:
+		
+func _damage_anim() -> void:
 	# prevent stacking tweens
 	if _damage_tween and _damage_tween.is_valid():
 		_damage_tween.kill()
