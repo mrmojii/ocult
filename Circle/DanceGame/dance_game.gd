@@ -24,7 +24,7 @@ var min_wait_time : float = 0.1
 @onready var timer_end: Timer = $TimerEnd
 
 
-const _time_start_wait : float = 3.0
+const _time_start_wait : float = 0.1
 var _time_step : float = 0.0
 var _arrows_left : int = 0
 var _wait_time : float = 0.0

@@ -1,21 +1,21 @@
 class_name FighterClass
 extends Node2D
 
-enum Type  { Normal, Archer, Warrior, Wizard }
+enum Type  { Normal = 0, Archer, Warrior, Wizard }
 enum Sides { Me, Op }
 
 const TEXTURES := {
 	Sides.Me: {
-		Type.Normal:  preload("res://Fight/assets/normal.png"),
-		Type.Archer:  preload("res://Fight/assets/archer.png"),
-		Type.Warrior: preload("res://Fight/assets/warrior.png"),
-		Type.Wizard:  preload("res://Fight/assets/wizard.png"),
+		Type.Normal:  preload("res://Fight/Assets/normal.png"),
+		Type.Archer:  preload("res://Fight/Assets/archer.png"),
+		Type.Warrior: preload("res://Fight/Assets/warrior.png"),
+		Type.Wizard:  preload("res://Fight/Assets/wizard.png"),
 	},
 	Sides.Op: {
-		Type.Normal:  preload("res://Fight/assets/normal_op.png"),
-		Type.Archer:  preload("res://Fight/assets/archer_op.png"),
-		Type.Warrior: preload("res://Fight/assets/warrior_op.png"),
-		Type.Wizard:  preload("res://Fight/assets/wizard_op.png"),
+		Type.Normal:  preload("res://Fight/Assets/normal_op.png"),
+		Type.Archer:  preload("res://Fight/Assets/archer_op.png"),
+		Type.Warrior: preload("res://Fight/Assets/warrior_op.png"),
+		Type.Wizard:  preload("res://Fight/Assets/wizard_op.png"),
 	}
 }
 # --- Tuning ---

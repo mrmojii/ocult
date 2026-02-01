@@ -52,10 +52,11 @@ tile_map_data = PackedByteArray("AADr//r/AAAAAAAAAADr//v/AAAAAAAAAADr//z/AAAAAAA
 tile_set = SubResource("TileSet_oeat8")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." unique_id=626537056 node_paths=PackedStringArray("dance_game", "circle") instance=ExtResource("1_3f78f")]
+[node name="Player" parent="." unique_id=626537056 node_paths=PackedStringArray("dance_game", "circle", "unit_move_point") instance=ExtResource("1_3f78f")]
 position = Vector2(-568, -150)
 dance_game = NodePath("../DanceGame")
 circle = NodePath("../Circle")
+unit_move_point = NodePath("../UnitMovePoint")
 
 [node name="Circle" parent="." unique_id=1205258289 instance=ExtResource("4_yf0ba")]
 position = Vector2(44, 243)
@@ -133,3 +134,5 @@ text = "300"
 horizontal_alignment = 1
 
 [connection signal="timeout" from="RequestTimer" to="." method="_on_request_timer_timeout"]
+[node name="UnitMovePoint" type="Marker2D" parent="." unique_id=636718218]
+position = Vector2(560, -162)

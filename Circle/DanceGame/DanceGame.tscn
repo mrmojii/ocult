@@ -6,55 +6,182 @@
 
 [sub_resource type="Resource" id="Resource_41r61"]
 script = ExtResource("2_uq6hg")
+time = 4.173
 keys = Vector4i(1, 0, 0, 0)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_o6gtd"]
 script = ExtResource("2_uq6hg")
-time = 2.0
+time = 4.9559999999999995
 keys = Vector4i(0, 1, 0, 0)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_j2cwj"]
 script = ExtResource("2_uq6hg")
-time = 2.9
+time = 5.478
 keys = Vector4i(0, 0, 1, 0)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_qg045"]
 script = ExtResource("2_uq6hg")
-time = 3.8
+time = 6.26
 keys = Vector4i(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_dcndd"]
 script = ExtResource("2_uq6hg")
-time = 4.7
+time = 7.043
 keys = Vector4i(1, 1, 0, 0)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_i6pm8"]
 script = ExtResource("2_uq6hg")
-time = 5.5
+time = 7.575
 keys = Vector4i(0, 0, 1, 1)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_thk8j"]
 script = ExtResource("2_uq6hg")
-time = 6.4
+time = 8.347
 keys = Vector4i(0, 1, 1, 1)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_uq6hg"]
 script = ExtResource("2_uq6hg")
-time = 7.5
+time = 9.13
 keys = Vector4i(1, 0, 1, 0)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="Resource" id="Resource_d23o2"]
 script = ExtResource("2_uq6hg")
-time = 8.4
+time = 9.652
 keys = Vector4i(0, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_4vhks"]
+script = ExtResource("2_uq6hg")
+time = 10.434
+keys = Vector4i(0, 0, 1, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_oeii1"]
+script = ExtResource("2_uq6hg")
+time = 11.217
+keys = Vector4i(1, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_3nijj"]
+script = ExtResource("2_uq6hg")
+time = 11.739
+keys = Vector4i(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_2q67d"]
+script = ExtResource("2_uq6hg")
+time = 12.521
+keys = Vector4i(0, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_ky883"]
+script = ExtResource("2_uq6hg")
+time = 13.304
+keys = Vector4i(0, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_yt0ic"]
+script = ExtResource("2_uq6hg")
+time = 13.826
+keys = Vector4i(0, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_c75ha"]
+script = ExtResource("2_uq6hg")
+time = 14.379
+keys = Vector4i(0, 0, 1, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_1ywo4"]
+script = ExtResource("2_uq6hg")
+time = 14.608
+keys = Vector4i(1, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_2y2g0"]
+script = ExtResource("2_uq6hg")
+time = 15.391
+keys = Vector4i(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_28kfl"]
+script = ExtResource("2_uq6hg")
+time = 15.931000000000001
+keys = Vector4i(0, 1, 1, 1)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_j6g5o"]
+script = ExtResource("2_uq6hg")
+time = 16.345
+keys = Vector4i(0, 0, 1, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_yvt3b"]
+script = ExtResource("2_uq6hg")
+time = 16.695
+keys = Vector4i(1, 0, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_1es8t"]
+script = ExtResource("2_uq6hg")
+time = 17.478
+keys = Vector4i(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_7phqm"]
+script = ExtResource("2_uq6hg")
+time = 18.0
+keys = Vector4i(0, 0, 1, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_6l6n1"]
+script = ExtResource("2_uq6hg")
+time = 18.42
+keys = Vector4i(0, 1, 1, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_56bae"]
+script = ExtResource("2_uq6hg")
+time = 18.72
+keys = Vector4i(0, 0, 1, 1)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_gvj5r"]
+script = ExtResource("2_uq6hg")
+time = 19.565
+keys = Vector4i(0, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_d7lee"]
+script = ExtResource("2_uq6hg")
+time = 20.085
+keys = Vector4i(0, 0, 1, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_8g4hf"]
+script = ExtResource("2_uq6hg")
+time = 20.41
+keys = Vector4i(1, 0, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_4epbf"]
+script = ExtResource("2_uq6hg")
+time = 20.869
+keys = Vector4i(0, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_66e7f"]
+script = ExtResource("2_uq6hg")
+time = 21.391
+keys = Vector4i(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44edx"]
@@ -62,7 +189,7 @@ size = Vector2(800, 35)
 
 [node name="DanceGame" type="Node2D" unique_id=848854737]
 script = ExtResource("1_uq6hg")
-keys = Array[ExtResource("2_uq6hg")]([SubResource("Resource_41r61"), SubResource("Resource_o6gtd"), SubResource("Resource_j2cwj"), SubResource("Resource_qg045"), SubResource("Resource_dcndd"), SubResource("Resource_i6pm8"), SubResource("Resource_thk8j"), SubResource("Resource_uq6hg"), SubResource("Resource_d23o2")])
+keys = Array[ExtResource("2_uq6hg")]([SubResource("Resource_41r61"), SubResource("Resource_o6gtd"), SubResource("Resource_j2cwj"), SubResource("Resource_qg045"), SubResource("Resource_dcndd"), SubResource("Resource_i6pm8"), SubResource("Resource_thk8j"), SubResource("Resource_uq6hg"), SubResource("Resource_d23o2"), SubResource("Resource_4vhks"), SubResource("Resource_oeii1"), SubResource("Resource_3nijj"), SubResource("Resource_2q67d"), SubResource("Resource_ky883"), SubResource("Resource_yt0ic"), SubResource("Resource_c75ha"), SubResource("Resource_1ywo4"), SubResource("Resource_2y2g0"), SubResource("Resource_28kfl"), SubResource("Resource_j6g5o"), SubResource("Resource_yvt3b"), SubResource("Resource_1es8t"), SubResource("Resource_7phqm"), SubResource("Resource_6l6n1"), SubResource("Resource_56bae"), SubResource("Resource_gvj5r"), SubResource("Resource_d7lee"), SubResource("Resource_8g4hf"), SubResource("Resource_4epbf"), SubResource("Resource_66e7f")])
 
 [node name="EndLine" type="Node2D" parent="." unique_id=339151294]
 position = Vector2(412, 756)
