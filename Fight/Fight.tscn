@@ -8,13 +8,11 @@
 z_index = 5
 script = ExtResource("1_ngwck")
 
-[node name="FighterContainer" type="Node" parent="." unique_id=125808488]
-
 [node name="FighterStartMe" type="Marker2D" parent="." unique_id=90027547]
-position = Vector2(250, 700)
+position = Vector2(705, 616)
 
 [node name="FighterStartOp" type="Marker2D" parent="." unique_id=1854154172]
-position = Vector2(1600, 700)
+position = Vector2(1200, 615)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=24333742]
 
@@ -68,6 +66,9 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6aq8q")
 theme_override_font_sizes/font_size = 32
 text = "Back to work"
+
+[node name="FighterContainer" type="Node" parent="CanvasLayer" unique_id=1204023738]
+unique_name_in_owner = true
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1604878597]
 

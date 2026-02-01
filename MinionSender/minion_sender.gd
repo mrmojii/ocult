@@ -2,6 +2,8 @@ extends Node2D
 
 var is_player_near = false
 
+@onready var bubble_list = %HBoxContainer
+
 func _process(delta: float) -> void:
 	if is_player_near && Input.is_action_just_pressed("Interact"):
 		print("send minions")

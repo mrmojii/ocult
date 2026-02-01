@@ -30,12 +30,20 @@ var FightScene = preload("res://Fight/Fight.tscn")
 
 enum ENNEMY_TYPE { Normal, Archer, Warrior, Wizard }
 
+var oponent_dictionnary = {
+	ENNEMY_TYPE.Normal:FighterData.Make(FighterClass.Type.Normal,10,10,10,10),
+	ENNEMY_TYPE.Archer:FighterData.Make(FighterClass.Type.Archer,15,5,20,5),
+	ENNEMY_TYPE.Warrior:FighterData.Make(FighterClass.Type.Warrior,20,20,5,5),
+	ENNEMY_TYPE.Wizard:FighterData.Make(FighterClass.Type.Wizard,10,5,5,25)
+}
+
 signal state_changed
 signal reset_stage
 signal current_request_changed
+signal minion_added
 
 var current_request:Array[ENNEMY_TYPE]
-var minion_roster = [FighterData]
+var minion_roster: Array[FighterData] = []
 
 var fight_scene:FightManager
 
@@ -64,6 +72,8 @@ func init():
 
 func reset():
 	reset_stage.emit()	
+	minion_roster.clear()
+	start_level()
 	
 func start_level():
 	if fight_scene:
@@ -86,6 +96,12 @@ func create_boss_request(numberOfEnnemies):
 
 func start_fight():
 	fight_scene = FightScene.instantiate()
+	var fighter_datas:Array[FighterData] = []
+	for op in current_request:
+		fighter_datas.append(oponent_dictionnary.get(op))
+	fight_scene.op_chars = fighter_datas
+	fight_scene.my_chars = minion_roster
+	fight_scene.global_position = Vector2(565,-245)
 	get_tree().current_scene.add_child(fight_scene)
 	
 func end_fight(result:FightManager.Result):
@@ -94,4 +110,7 @@ func end_fight(result:FightManager.Result):
 	elif result == FightManager.Result.Lose:
 		complete_request(false)
 		
-	
+func add_minion_to_roster(minion:FighterData):
+	minion_roster.append(minion)
+	minion_added.emit(minion)
+	#add sprite to wall

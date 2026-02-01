@@ -12,6 +12,7 @@ var op_chars: Array[FighterData] = []
 @onready var TitleText = %TitleText
 
 func Start():
+	
 	$SpawnTimer.start()
 	
 func Reset():
@@ -54,7 +55,7 @@ func _spawn_fighter(pos:Vector2, side:FighterClass.Sides, fighter_data:FighterDa
 	var fighter_instance = _FIGHTER_SCENE.instantiate() as FighterClass
 	fighter_instance.set_characteristic(side, fighter_data)
 	fighter_instance.position = pos
-	$FighterContainer.add_child(fighter_instance)
+	%FighterContainer.add_child(fighter_instance)
 
 func _on_button_pressed() -> void:
 	FightEnd.emit(_result)
@@ -64,7 +65,7 @@ func _on_end_checker_timeout() -> void:
 	var has_me := false
 	var has_op := false
 
-	for child in $FighterContainer.get_children():
+	for child in %FighterContainer.get_children():
 		if child is not FighterClass or child.is_queued_for_deletion():
 			continue
 

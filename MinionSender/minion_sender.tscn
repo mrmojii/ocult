@@ -1,13 +1,8 @@
 [gd_scene format=3 uid="uid://b2ttfntv05cn1"]
 
 [ext_resource type="Script" uid="uid://7ac1h13fngq6" path="res://MinionSender/minion_sender.gd" id="1_1hk66"]
-
-[sub_resource type="Gradient" id="Gradient_rc08n"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.46641946, 0.3001565, 0.6738828, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1hk66"]
-gradient = SubResource("Gradient_rc08n")
+[ext_resource type="Texture2D" uid="uid://chqfsuhc8agft" path="res://Assets/bubble-straight.png" id="2_jgyjn"]
+[ext_resource type="Texture2D" uid="uid://coqothv88urgf" path="res://Assets/Send_Button.png" id="2_thr5e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hk66"]
 radius = 100.84146
@@ -16,7 +11,7 @@ radius = 100.84146
 script = ExtResource("1_1hk66")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=95925289]
-texture = SubResource("GradientTexture2D_1hk66")
+texture = ExtResource("2_thr5e")
 
 [node name="Timer" type="Timer" parent="." unique_id=2014201634]
 
@@ -25,6 +20,50 @@ texture = SubResource("GradientTexture2D_1hk66")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1553256726]
 position = Vector2(0, 63)
 shape = SubResource("CircleShape2D_1hk66")
+
+[node name="Control" type="Control" parent="." unique_id=1171405130]
+unique_name_in_owner = true
+layout_direction = 3
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 41.0
+offset_top = -20.0
+offset_right = 41.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=2044214478]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer" unique_id=918004801]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_jgyjn")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer" unique_id=1282996474]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer" unique_id=1839395246]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = -16
+alignment = 2
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

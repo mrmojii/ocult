@@ -3,9 +3,51 @@
 [ext_resource type="Texture2D" uid="uid://oqg3asfljco0" path="res://Assets/Magic_Mirror.png" id="1_3q64s"]
 [ext_resource type="Script" uid="uid://csmm44qu8ahuf" path="res://Mirror/boss_mirror.gd" id="1_ptgi5"]
 [ext_resource type="Texture2D" uid="uid://bordn5smv3au2" path="res://Assets/bubble.png" id="2_ptgi5"]
+[ext_resource type="Texture2D" uid="uid://d373dvyoadpfu" path="res://Assets/Mirror_Boss.png" id="4_ptgi5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ptgi5"]
 radius = 61.008198
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adh0m"]
+atlas = ExtResource("4_ptgi5")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iidsa"]
+atlas = ExtResource("4_ptgi5")
+region = Rect2(96, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_libo6"]
+atlas = ExtResource("4_ptgi5")
+region = Rect2(192, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syxy2"]
+atlas = ExtResource("4_ptgi5")
+region = Rect2(288, 0, 96, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_104di"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adh0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iidsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_libo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syxy2")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="BossMirror" type="Node2D" unique_id=2112466077]
 script = ExtResource("1_ptgi5")
@@ -67,6 +109,12 @@ shape = SubResource("CircleShape2D_ptgi5")
 [node name="sprite_add_timer" type="Timer" parent="." unique_id=1287171525]
 unique_name_in_owner = true
 wait_time = 0.2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1592623267]
+sprite_frames = SubResource("SpriteFrames_104di")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.03305454
 
 [connection signal="visibility_changed" from="Control" to="." method="_on_control_visibility_changed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
