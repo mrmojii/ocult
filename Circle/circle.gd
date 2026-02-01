@@ -191,6 +191,10 @@ func clear_circle() -> void:
 			c.queue_free()
 
 func clear_items() -> void:	
+	_str = 0
+	_agi = 0
+	_int = 0
+	
 	for i in _items:
 		match i.data.id:
 			1: _int += 8 + (i.power * 2)
