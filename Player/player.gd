@@ -25,6 +25,8 @@ var _moving_camera_back := false
 
 var _controls_locked := false
 
+
+
 func _ready() -> void:
 	dance_game.Finished.connect(_on_dance_finished)
 	PlayerManager.circle = circle

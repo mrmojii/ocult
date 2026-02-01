@@ -44,6 +44,12 @@ signal minion_added
 
 var current_request:Array[ENNEMY_TYPE]
 var minion_roster: Array[FighterData] = []
+var request_duration:int = 300
+var request_remaining_time:int = request_duration:
+	set(value):
+		request_remaining_time = value
+		if request_remaining_time <= 0:
+			complete_request(false)
 
 var fight_scene:FightManager
 
@@ -114,3 +120,7 @@ func add_minion_to_roster(minion:FighterData):
 	minion_roster.append(minion)
 	minion_added.emit(minion)
 	#add sprite to wall
+	
+func tick_time():
+	request_remaining_time -= 1 
+	print(request_remaining_time)

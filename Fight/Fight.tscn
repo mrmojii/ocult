@@ -48,6 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/EndPanel" unique_id=1444448294]
+visible = false
 layout_mode = 2
 
 [node name="TitleText" type="Label" parent="CanvasLayer/Control/EndPanel/HBoxContainer" unique_id=111580677]

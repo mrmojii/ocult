@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b2ttfntv05cn1" path="res://MinionSender/minion_sender.tscn" id="13_0wqet"]
 [ext_resource type="Resource" uid="uid://bmd7u2wbjp0rf" path="res://World/Interactables/interactables_types/Ore.tres" id="13_awrha"]
 [ext_resource type="PackedScene" uid="uid://dikgum4rwqa11" path="res://Circle/ClearCircle.tscn" id="14_awrha"]
+[ext_resource type="Texture2D" uid="uid://chqfsuhc8agft" path="res://Assets/bubble-straight.png" id="16_oeat8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f23eu"]
 texture = ExtResource("2_awrha")
@@ -33,6 +34,13 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_f23eu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5xkvv"]
+texture = ExtResource("16_oeat8")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
 
 [node name="World" type="Node2D" unique_id=1330705175 node_paths=PackedStringArray("player")]
 script = ExtResource("1_k8do8")
@@ -83,6 +91,7 @@ position = Vector2(-568, -253)
 
 [node name="MinionSender" parent="." unique_id=1951224978 instance=ExtResource("13_0wqet")]
 position = Vector2(565, -245)
+
 [node name="DanceGame" parent="." unique_id=848854737 instance=ExtResource("5_0wqet")]
 visible = false
 position = Vector2(-331, -140)
@@ -90,3 +99,37 @@ position = Vector2(-331, -140)
 [node name="ClearCircle" parent="." unique_id=280839688 node_paths=PackedStringArray("circle") instance=ExtResource("14_awrha")]
 position = Vector2(244, 767)
 circle = NodePath("../Circle")
+
+[node name="RequestTimer" type="Timer" parent="." unique_id=403376648]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="." unique_id=1681823305]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -492.0
+offset_top = -282.0
+offset_right = -452.0
+offset_bottom = -242.0
+
+[node name="Panel" type="Panel" parent="Control" unique_id=263115864]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5xkvv")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=753461155]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Label" type="Label" parent="Control/MarginContainer" unique_id=1270355190]
+unique_name_in_owner = true
+layout_mode = 2
+text = "300"
+horizontal_alignment = 1
+
+[connection signal="timeout" from="RequestTimer" to="." method="_on_request_timer_timeout"]
