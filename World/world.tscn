@@ -44,9 +44,10 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
-[node name="World" type="Node2D" unique_id=1330705175 node_paths=PackedStringArray("player")]
+[node name="World" type="Node2D" unique_id=1330705175 node_paths=PackedStringArray("player", "audio")]
 script = ExtResource("1_k8do8")
 player = NodePath("Player")
+audio = NodePath("Audio")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=126665879]
 z_index = -2

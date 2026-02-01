@@ -3,12 +3,13 @@ extends Node2D
 @export var player : Player
 @onready var request_timer = %RequestTimer
 @onready var clock = %Label
+@export var audio : AudioStreamPlayer2D
 
 func _ready() -> void:
 	PlayerManager.player = player
 	GameManager.init()
 	GameManager.current_request_changed.connect(_on_current_request_changed)
-
+	PlayerManager.audio = audio
 
 func _on_request_timer_timeout() -> void:
 	GameManager.tick_time()

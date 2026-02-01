@@ -54,6 +54,7 @@ func start() -> void:
 	timer_start.wait_time = _time_start_wait
 	timer_start.start()
 	timer_music.start()
+	PlayerManager.audio.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -191,6 +192,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func _on_timer_end_timeout() -> void:
 	_is_playing = false
 	Finished.emit()
+	PlayerManager.audio.play()
 
 
 func _on_timer_music_timeout() -> void:
