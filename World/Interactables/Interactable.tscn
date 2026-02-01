@@ -7,10 +7,10 @@
 friction = 50.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f513q"]
-size = Vector2(32, 32)
+size = Vector2(26, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f513q"]
-radius = 75.0
+radius = 50.0
 
 [sub_resource type="Animation" id="Animation_f513q"]
 length = 0.001

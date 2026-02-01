@@ -33,6 +33,10 @@ var _items : Array[Interactable]
 var _item_current : int
 var _mask : Interactable
 
+var _str : int = 0
+var _agi : int = 0
+var _int : int = 0
+
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, radius, Color.RED, false)
 
@@ -179,8 +183,14 @@ func clear_circle() -> void:
 		if c is Line2D:
 			c.queue_free()
 
-func clear_items() -> void:
+func clear_items() -> void:	
 	for i in _items:
+		match i.data.id:
+			1: _int += 8 + (i.power * 2)
+			2: _str += 8 + (i.power * 2)
+			3: _agi += 8 + (i.power * 2)
 		i.queue_free()
 	if _mask:
 		_mask.queue_free()
+	
+	print("str: %d, agi: %d, int: %d" % [_str, _agi, _int])

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://con7xjy3pv3iv"]
+
+[ext_resource type="Script" uid="uid://ckiucdwagwlf6" path="res://Units/unit.gd" id="1_00fr1"]
+[ext_resource type="Texture2D" uid="uid://w2g3lyp1iqpy" path="res://icon.svg" id="1_j3ort"]
+
+[node name="Unit" type="Node2D" unique_id=890764628 node_paths=PackedStringArray("label_str", "label_agi", "label_int", "timer")]
+script = ExtResource("1_00fr1")
+label_str = NodePath("Panel/VBoxContainer/LabelStr")
+label_agi = NodePath("Panel/VBoxContainer/LabelAgi")
+label_int = NodePath("Panel/VBoxContainer/LabelInt")
+timer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1180316581]
+texture = ExtResource("1_j3ort")
+
+[node name="Panel" type="Panel" parent="." unique_id=1330203029]
+offset_left = 87.0
+offset_top = -64.0
+offset_right = 193.0
+offset_bottom = 47.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1380424817]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -35.5
+offset_right = 40.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelStr" type="Label" parent="Panel/VBoxContainer" unique_id=1123387162]
+layout_mode = 2
+text = "STR: 40"
+
+[node name="LabelAgi" type="Label" parent="Panel/VBoxContainer" unique_id=1568772091]
+layout_mode = 2
+text = "AGI: 40"
+
+[node name="LabelInt" type="Label" parent="Panel/VBoxContainer" unique_id=351997917]
+layout_mode = 2
+text = "INT: 40"
+
+[node name="Timer" type="Timer" parent="." unique_id=1002610267]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

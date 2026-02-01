@@ -1,10 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
+const UNIT = preload("uid://con7xjy3pv3iv")
+
 @export var drop_point: Marker2D
 @export var camera: Camera2D
 @export var dance_game : DanceGame
 @export var circle : Circle
+@export var unit_move_point : Marker2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -192,6 +195,18 @@ func _on_dance_finished() -> void:
 	dance_game._score = 0
 	circle.clear_circle()
 	circle.clear_items()
+	
+	var unit = UNIT.instantiate()
+	get_tree().current_scene.add_child(unit)
+	unit.global_position = circle.global_position
+	unit.move_point = unit_move_point.global_position
+	
+	unit.set_str(circle._str)
+	unit.set_agi(circle._agi)
+	unit.set_int(circle._int)
+	
+	unit.timer.start()
+	unit.get_unit_class()
 	
 func hover_activation_area(area: ActivationArea) -> void:
 	_activation_area = area

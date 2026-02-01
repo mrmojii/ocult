@@ -44,10 +44,11 @@ tile_map_data = PackedByteArray("AADr//r/AAAAAAAAAADr//v/AAAAAAAAAADr//z/AAAAAAA
 tile_set = SubResource("TileSet_oeat8")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." unique_id=626537056 node_paths=PackedStringArray("dance_game", "circle") instance=ExtResource("1_3f78f")]
+[node name="Player" parent="." unique_id=626537056 node_paths=PackedStringArray("dance_game", "circle", "unit_move_point") instance=ExtResource("1_3f78f")]
 position = Vector2(-568, -150)
 dance_game = NodePath("../DanceGame")
 circle = NodePath("../Circle")
+unit_move_point = NodePath("../UnitMovePoint")
 
 [node name="Circle" parent="." unique_id=1205258289 instance=ExtResource("4_yf0ba")]
 position = Vector2(44, 243)
@@ -83,6 +84,7 @@ position = Vector2(-568, -253)
 
 [node name="MinionSender" parent="." unique_id=1951224978 instance=ExtResource("13_0wqet")]
 position = Vector2(565, -245)
+
 [node name="DanceGame" parent="." unique_id=848854737 instance=ExtResource("5_0wqet")]
 visible = false
 position = Vector2(-331, -140)
@@ -90,3 +92,6 @@ position = Vector2(-331, -140)
 [node name="ClearCircle" parent="." unique_id=280839688 node_paths=PackedStringArray("circle") instance=ExtResource("14_awrha")]
 position = Vector2(244, 767)
 circle = NodePath("../Circle")
+
+[node name="UnitMovePoint" type="Marker2D" parent="." unique_id=636718218]
+position = Vector2(560, -162)

@@ -7,19 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://wopegxuxcrc4" path="res://Assets/Circle.png" id="4_odtd8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_odtd8"]
-radius = 50.0
+radius = 55.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bflbg"]
-radius = 50.0
+radius = 55.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjcjt"]
-radius = 50.0
+radius = 55.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gnkcn"]
-radius = 50.0
+radius = 55.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yhp4"]
-radius = 50.0
+radius = 55.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_th0qy"]
 radius = 95.0
