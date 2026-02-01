@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c7grk1iof8xid" path="res://Fight/Assets/background.png" id="1_bv4rg"]
 [ext_resource type="Script" uid="uid://bcy8id4cxpdyq" path="res://Fight/Scripts/Fight.gd" id="1_ngwck"]
 [ext_resource type="FontFile" uid="uid://bkpi0k1kbwmr3" path="res://Assets/fonts/DePixelHalbfett.otf" id="3_6aq8q"]
+[ext_resource type="AudioStream" uid="uid://d0878cu8tiu87" path="res://Assets/audio/occult_fight_2 Edit 1 Export 1.ogg" id="4_exko0"]
 
 [node name="Fight" type="Node2D" unique_id=879052435]
 z_index = 5
@@ -73,6 +74,11 @@ unique_name_in_owner = true
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1604878597]
 
 [node name="EndChecker" type="Timer" parent="." unique_id=1936278384]
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=220569048]
+stream = ExtResource("4_exko0")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/Control/EndPanel/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

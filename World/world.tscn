@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dikgum4rwqa11" path="res://Circle/ClearCircle.tscn" id="14_awrha"]
 [ext_resource type="Texture2D" uid="uid://chqfsuhc8agft" path="res://Assets/bubble-straight.png" id="16_oeat8"]
 [ext_resource type="Texture2D" uid="uid://cihmrimhro46n" path="res://Assets/Tutorial_.png" id="17_5xkvv"]
+[ext_resource type="AudioStream" uid="uid://rgu54fik8cko" path="res://Assets/audio/occult_sound Edit_Intro Export 1.ogg" id="18_kcyjf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f23eu"]
 texture = ExtResource("2_awrha")
@@ -150,5 +151,9 @@ scale = Vector2(0.07835422, 0.08628117)
 texture = ExtResource("17_5xkvv")
 region_enabled = true
 region_rect = Rect2(0, 0, 974.6609, 1323.2396)
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=1614891391]
+stream = ExtResource("18_kcyjf")
+autoplay = true
 
 [connection signal="timeout" from="RequestTimer" to="." method="_on_request_timer_timeout"]
