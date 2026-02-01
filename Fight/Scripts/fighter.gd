@@ -56,26 +56,24 @@ const TEXTURES := {
 }
 
 # --- State ---
-var _type: Type = Type.Normal
+var _data: FighterData
 var _side: Sides = Sides.Me
 var _attack_tween: Tween
 var _damage_tween: Tween
 var _target: FighterClass
 var _current_hp: int = 0
-var _stats: Variant
 
 # ---------- Public API ----------
-func set_characteristic(side: Sides, type: Type, stats: Variant) -> void:
-	_type = type
+func set_characteristic(side: Sides, data: FighterData) -> void:
+	_data = data
 	_side = side
-	_stats = stats
-	_current_hp = _stats.hp
+	_current_hp = _data.hp
 	_apply_shot_radius()
 	_apply_visuals()
 	
 func take_hit(dmg: int) -> void:
 	_current_hp -= dmg
-	$Health.set_value(100.0 * _current_hp / _stats.hp)
+	$Health.set_value(100.0 * _current_hp / _data.hp)
 	_damage_anim()
 	
 	if _current_hp <= 0:
@@ -88,7 +86,7 @@ func get_side() -> Sides:
 	return _side
 	
 func get_type() -> Type:
-	return _type
+	return _data.type
 
 # ---------- Lifecycle ----------
 func _ready() -> void:
@@ -108,11 +106,11 @@ func _process(delta: float) -> void:
 func _get_hit_value() -> int:
 	var dmg := 0.0
 
-	match _type:
-		Type.Normal:  dmg = 5 + _stats.strength
-		Type.Warrior: dmg = 8 + _stats.strength * 1.5
-		Type.Archer:  dmg = (4 + _stats.agility * 1.2) * randf_range(0.8, 1.2)
-		Type.Wizard:  dmg = (3 + _stats.intelligence * 2.0) * randf_range(0.65, 1.35)
+	match _data.type:
+		Type.Normal:  dmg = 5 + _data.strength
+		Type.Warrior: dmg = 8 + _data.strength * 1.5
+		Type.Archer:  dmg = (4 + _data.agility * 1.2) * randf_range(0.8, 1.2)
+		Type.Wizard:  dmg = (3 + _data.intelligence * 2.0) * randf_range(0.65, 1.35)
 		
 	return int(round(dmg))
 	
@@ -152,14 +150,14 @@ func _stop_attack_timer() -> void:
 
 # ---------- Visual setup ----------
 func _apply_visuals() -> void:
-	$Sprite.texture = TEXTURES[_side][_type]
+	$Sprite.texture = TEXTURES[_side][_data.type]
 
 func _apply_shot_radius() -> void:
 	# Duplicate shape so each instance has its own radius
 	$ShotCollision/CollisionShape2D.shape = $ShotCollision/CollisionShape2D.shape.duplicate()
 	var circle := $ShotCollision/CollisionShape2D.shape as CircleShape2D
 	if circle:
-		circle.radius = SHOT_RANGE[_type]
+		circle.radius = SHOT_RANGE[_data.type]
 
 # ---------- Attack animation ----------
 func _on_timer_attack_timeout() -> void:
@@ -169,7 +167,7 @@ func _on_timer_attack_timeout() -> void:
 		return
 
 	_play_attack_anim()
-	_target.take_hit(_get_hit_value() * AFFINITY[_type][_target.get_type()])
+	_target.take_hit(_get_hit_value() * AFFINITY[_data.type][_target.get_type()])
 	
 # ---------- Animations --------------
 func _play_attack_anim() -> void:
