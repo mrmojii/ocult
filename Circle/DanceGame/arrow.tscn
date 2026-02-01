@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dtxk1jdo3mg7h"]
+
+[ext_resource type="Script" uid="uid://rkilg8alhkhm" path="res://Circle/DanceGame/arrow.gd" id="1_iywct"]
+[ext_resource type="Texture2D" uid="uid://dgrs08i5skihg" path="res://arrow.png" id="1_jxx4h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywct"]
+size = Vector2(128, 128)
+
+[node name="Arrow" type="Node2D" unique_id=370619114]
+script = ExtResource("1_iywct")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=576054674]
+texture = ExtResource("1_jxx4h")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=170098469]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=14483403]
+shape = SubResource("RectangleShape2D_iywct")

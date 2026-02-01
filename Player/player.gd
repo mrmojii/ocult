@@ -19,6 +19,8 @@ var _is_activating := false
 var _activation_time : float = 0.0
 var _moving_camera_back := false
 
+var _controls_locked := false
+
 func add_interactable(obj : Interactable) -> void:
 	_interactables.push_back(obj)
 	if _interactables.size() == 1:
@@ -55,7 +57,6 @@ func _process(delta: float) -> void:
 		camera.zoom = lerp(camera.zoom, Vector2(3.0,3.0), 0.03)
 		if global_position.distance_to(camera.global_position) <= 1.0:
 			_moving_camera_back = false
-			camera.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
 
 func _move_picked() -> void:
 	if !_picked_interactable:
@@ -86,7 +87,8 @@ func _physics_process(delta: float) -> void:
 	direction.y = Input.get_axis("MoveUp", "MoveDown")
 	direction = direction.normalized()
 
-	velocity = SPEED * direction
+	if !_controls_locked:
+		velocity = SPEED * direction
 
 	var collision = move_and_collide(velocity * delta)
 	if collision:
@@ -138,7 +140,7 @@ func _interact_activation_area() ->  void:
 	_moving_camera_back = false
 	
 func _release_activation_area() -> void:
-	if !_activation_area:
+	if !_activation_area or _controls_locked:
 		return
 		
 	if !_activation_area.timer.is_stopped():
@@ -146,11 +148,10 @@ func _release_activation_area() -> void:
 		print("too early!")
 	_is_activating = false
 	_moving_camera_back = true
-	camera.process_callback = Camera2D.CAMERA2D_PROCESS_IDLE
 
 func _on_activation_area_timer() -> void:
 	print("timer")
-	pass
+	_controls_locked = true
 	
 func hover_activation_area(area : ActivationArea) -> void:
 	_activation_area = area

@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://cj74j8adwh3nh"]
+
+[ext_resource type="Texture2D" uid="uid://v6cy77voqym3" path="res://white_wall.png" id="1_44edx"]
+[ext_resource type="Script" uid="uid://dhh74shfxkihs" path="res://Circle/DanceGame/dance_game.gd" id="1_uq6hg"]
+[ext_resource type="Script" uid="uid://cvdqw3tjxkbo0" path="res://Circle/DanceGame/DanceTimestamp.gd" id="2_uq6hg"]
+
+[sub_resource type="Resource" id="Resource_41r61"]
+script = ExtResource("2_uq6hg")
+keys = Vector4i(1, 0, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_o6gtd"]
+script = ExtResource("2_uq6hg")
+time = 2.0
+keys = Vector4i(0, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_j2cwj"]
+script = ExtResource("2_uq6hg")
+time = 2.9
+keys = Vector4i(0, 0, 1, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_qg045"]
+script = ExtResource("2_uq6hg")
+time = 3.8
+keys = Vector4i(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_dcndd"]
+script = ExtResource("2_uq6hg")
+time = 4.7
+keys = Vector4i(1, 1, 0, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_i6pm8"]
+script = ExtResource("2_uq6hg")
+time = 5.5
+keys = Vector4i(0, 0, 1, 1)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_thk8j"]
+script = ExtResource("2_uq6hg")
+time = 6.4
+keys = Vector4i(0, 1, 1, 1)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="Resource" id="Resource_uq6hg"]
+script = ExtResource("2_uq6hg")
+time = 7.5
+keys = Vector4i(1, 0, 1, 0)
+metadata/_custom_type_script = "uid://cvdqw3tjxkbo0"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44edx"]
+size = Vector2(800, 35)
+
+[node name="DanceGame" type="Node2D" unique_id=848854737]
+script = ExtResource("1_uq6hg")
+keys = Array[ExtResource("2_uq6hg")]([SubResource("Resource_41r61"), SubResource("Resource_o6gtd"), SubResource("Resource_j2cwj"), SubResource("Resource_qg045"), SubResource("Resource_dcndd"), SubResource("Resource_i6pm8"), SubResource("Resource_thk8j"), SubResource("Resource_uq6hg")])
+
+[node name="EndLine" type="Node2D" parent="." unique_id=339151294]
+position = Vector2(412, 756)
+
+[node name="Sprite2D" type="Sprite2D" parent="EndLine" unique_id=1476283680]
+scale = Vector2(23.374998, 1)
+texture = ExtResource("1_44edx")
+
+[node name="Area2D" type="Area2D" parent="EndLine" unique_id=1682665319]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndLine/Area2D" unique_id=565157279]
+shape = SubResource("RectangleShape2D_44edx")
+
+[node name="Timer" type="Timer" parent="." unique_id=28317619]
+one_shot = true
+
+[node name="TimerStart" type="Timer" parent="." unique_id=2078845638]
+wait_time = 3.0
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1373662818]
+position = Vector2(197, -35)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=541633525]
+position = Vector2(368, -39)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=1140476942]
+position = Vector2(527, -43)
+
+[node name="Marker2D4" type="Marker2D" parent="." unique_id=1326828166]
+position = Vector2(696, -40)
+
+[node name="Arrows" type="Node2D" parent="." unique_id=792478478]
+
+[node name="Label" type="Label" parent="." unique_id=1489868483]
+offset_right = 40.0
+offset_bottom = 21.0
+text = "000"
+
+[node name="ButtonRight" type="Sprite2D" parent="." unique_id=238013653]
+position = Vector2(197, 865)
+texture = ExtResource("1_44edx")
+
+[node name="ButtonLeft2" type="Sprite2D" parent="." unique_id=1778665780]
+position = Vector2(368, 865)
+texture = ExtResource("1_44edx")
+
+[node name="ButtonUp" type="Sprite2D" parent="." unique_id=387883790]
+position = Vector2(527, 865)
+texture = ExtResource("1_44edx")
+
+[node name="ButtonDown" type="Sprite2D" parent="." unique_id=1271818150]
+position = Vector2(696, 865)
+texture = ExtResource("1_44edx")
+
+[connection signal="area_entered" from="EndLine/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="EndLine/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerStart" to="." method="_on_timer_start_timeout"]
